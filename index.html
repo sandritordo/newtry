@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,58 +10,109 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#0d0d0d;--card:#1a1a1a;--text:#fff}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:"League Spartan",sans-serif}
-    a{text-decoration:none;color:inherit} img{max-width:100%;display:block}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"League Spartan",sans-serif}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
     .container{width:min(1600px,100% - 48px);margin:auto}
-    .nav{position:fixed;inset:0 0 auto 0;z-index:20;padding:24px 0;background:linear-gradient(to bottom, rgba(13,13,13,.75), rgba(13,13,13,0))}
+
+    .nav{
+      position:fixed;inset:0 0 auto 0;z-index:20;padding:24px 0;
+      background:linear-gradient(to bottom, rgba(13,13,13,.75), rgba(13,13,13,0))
+    }
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .logo{font-weight:800;letter-spacing:.25em;text-transform:lowercase;font-size:15px}
     .nav-links{display:flex;gap:28px;font-size:13px;font-weight:400;letter-spacing:.24em;text-transform:lowercase}
+
     .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#000}
-    .hero iframe{position:absolute;left:50%;top:50%;width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:.82}
+    .hero iframe{
+      position:absolute;left:50%;top:50%;width:177.78vh;min-width:100%;
+      height:56.25vw;min-height:100%;transform:translate(-50%,-50%);
+      border:0;pointer-events:none;opacity:.82
+    }
     .overlay{position:absolute;inset:0;background:rgba(0,0,0,.58)}
     .hero-copy{position:relative;z-index:2;padding:0 0 56px 0;max-width:900px}
     h1{font-size:clamp(54px,9vw,96px);line-height:.95;margin:0;font-weight:800;max-width:8ch}
     .subtitle{font-size:18px;font-weight:300;line-height:1.6;opacity:.85;max-width:580px;margin:24px 0 0}
-    .btn{display:inline-flex;align-items:center;gap:12px;border:1px solid #fff;padding:16px 24px;margin-top:28px;font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;transition:.25s;background:transparent}
+    .btn{
+      display:inline-flex;align-items:center;gap:12px;border:1px solid #fff;
+      padding:16px 24px;margin-top:28px;font-size:13px;font-weight:700;
+      letter-spacing:.32em;text-transform:uppercase;transition:.25s;background:transparent
+    }
     .btn:hover{background:#fff;color:#000}
+
     .section{padding:110px 0}
-    .label{font-size:14px;font-weight:500;letter-spacing:.32em;text-transform:lowercase;opacity:.6}
+    .label{font-size:14px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;opacity:.6}
     h2{font-size:clamp(42px,6vw,64px);line-height:1;margin:18px 0 0;font-weight:700}
+
     .services{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:72px}
-    .service{padding-top:20px}.line{height:1px;background:rgba(255,255,255,.75);margin-bottom:28px}
-    .num{font-size:48px;font-weight:800;line-height:1}.stitle{font-size:24px;font-weight:700;margin-top:24px}.sdesc{font-size:16px;font-weight:300;line-height:1.65;opacity:.7;margin-top:14px;max-width:34ch}
+    .service{padding-top:20px}
+    .line{height:1px;background:rgba(255,255,255,.75);margin-bottom:28px}
+    .num{font-size:48px;font-weight:800;line-height:1}
+    .stitle{font-size:24px;font-weight:700;margin-top:24px}
+    .sdesc{font-size:16px;font-weight:300;line-height:1.65;opacity:.7;margin-top:14px;max-width:34ch}
+
     .stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .card{background:var(--card);border-radius:28px;min-height:320px;padding:34px;display:flex;flex-direction:column;justify-content:space-between}
+    .card{
+      background:var(--card);border-radius:28px;min-height:320px;padding:34px;
+      display:flex;flex-direction:column;justify-content:space-between
+    }
     .big{font-size:clamp(72px,11vw,120px);font-weight:800;line-height:1}
     .muted{font-size:16px;font-weight:300;opacity:.7}
     .center{text-align:center}
+
     .work-rails{display:grid;gap:72px;margin-top:56px}
     .rail-title{font-size:32px;font-weight:700;margin-bottom:22px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .project{position:relative;overflow:hidden;border-radius:22px;background:var(--card);aspect-ratio:16/9}
     .project img{width:100%;height:100%;object-fit:cover;opacity:.62;filter:grayscale(1);transition:.35s}
     .project:hover img{opacity:.96;filter:grayscale(0);transform:scale(1.02)}
-    .project .caption{position:absolute;inset:auto 0 0 0;padding:20px;background:linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,0));opacity:0;transition:.25s;font-size:22px;font-weight:700}
+    .project .caption{
+      position:absolute;inset:auto 0 0 0;padding:20px;
+      background:linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,0));
+      opacity:0;transition:.25s;font-size:22px;font-weight:700
+    }
     .project:hover .caption{opacity:1}
+
     .about-title{font-size:clamp(56px,13vw,160px);line-height:.9;font-weight:800}
     .about-copy{font-size:20px;line-height:1.7;font-weight:300;opacity:.85;max-width:860px;margin-top:28px}
+
     .process-line{height:1px;background:rgba(255,255,255,.35);margin:42px 0 34px}
     .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+
     .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:54px}
     .portrait{border-radius:28px;overflow:hidden;background:var(--card);aspect-ratio:4/5}
     .portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
-    .name{font-size:24px;font-weight:700;margin-top:18px}.role{font-size:16px;font-weight:300;opacity:.7;margin-top:4px}
+    .name{font-size:24px;font-weight:700;margin-top:18px}
+    .role{font-size:16px;font-weight:300;opacity:.7;margin-top:4px}
+
     .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;margin-top:56px}
     .small-label{font-size:13px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;opacity:.6}
     .value{font-size:20px;font-weight:700;margin-top:12px}
-    .field{width:100%;background:transparent;color:#fff;border:0;border-bottom:1px solid rgba(255,255,255,.4);padding:16px 0;font:300 16px/1.4 "League Spartan",sans-serif;outline:0}
+    .field{
+      width:100%;background:transparent;color:#fff;border:0;
+      border-bottom:1px solid rgba(255,255,255,.4);padding:16px 0;
+      font:300 16px/1.4 "League Spartan",sans-serif;outline:0
+    }
     textarea.field{resize:vertical;min-height:120px}
+
     footer{border-top:1px solid rgba(255,255,255,.1);padding:32px 0 24px}
     .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:center}
     .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
     .footer-meta{font-size:13px;font-weight:300;opacity:.6;text-align:right}
     .socials{margin-top:18px;font-size:13px;opacity:.6;display:flex;gap:16px}
+
+    .fade-in{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+    .fade-in.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
     @media (max-width: 900px){
       .nav-links{display:none}
       .services,.grid-3,.grid-4,.stats,.team-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
@@ -73,16 +124,314 @@
   </style>
 </head>
 <body>
-  <header class="nav"><div class="container nav-inner"><a href="#home" class="logo">oddcut media</a><nav class="nav-links"><a href="#trabalho">work</a><a href="#sobre">about us</a><a href="#contacto">contact</a></nav></div></header>
-  <section id="home" class="hero"><iframe src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&muted=1&loop=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" title="Showreel"></iframe><div class="overlay"></div><div class="container hero-copy"><h1>Vídeo que comunica.</h1><p class="subtitle">Criamos conteúdo para marcas que querem ser vistas, lembradas e escolhidas.</p><a class="btn" href="https://vimeo.com/76979871" target="_blank" rel="noopener">► Showreel</a></div></section>
-  <section class="section"><div class="container"><div class="label">Our Services</div><div class="services"><div class="service"><div class="line"></div><div class="num">01</div><div class="stitle">Brand</div><div class="sdesc">Conteúdo que constrói marca ao longo do tempo.</div></div><div class="service"><div class="line"></div><div class="num">02</div><div class="stitle">Eventos</div><div class="sdesc">Vídeos dos momentos que marcam a sua empresa.</div></div><div class="service"><div class="line"></div><div class="num">03</div><div class="stitle">Campaign</div><div class="sdesc">Comunicação com objetivo. Atenção imediata, resultado concreto.</div></div></div></div></section>
-  <section class="section" style="padding-top:0"><div class="container stats"><div class="card"><div class="big">15</div><div class="muted">Anos de experiência conjunta</div></div><div class="card"><div class="big">100+</div><div class="muted">Projetos entregues</div></div></div></section>
-  <section id="trabalho" class="section"><div class="container"><h2 style="font-size:clamp(54px,9vw,96px);font-weight:800">Work.</h2><div class="grid-3"><a class="project" href="#"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Brand 01</div></a><a class="project" href="#"><img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Brand 02</div></a><a class="project" href="#"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Brand 03</div></a></div></div><div><div class="rail-title">Product</div><div class="grid-3"><a class="project" href="#"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Product 01</div></a><a class="project" href="#"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Product 02</div></a><a class="project" href="#"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Product 03</div></a></div></div><div><div class="rail-title">Campaign</div><div class="grid-3"><a class="project" href="#"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Campaign 01</div></a><a class="project" href="#"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Campaign 02</div></a><a class="project" href="#"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt=""><div class="caption">Projeto Campaign 03</div></a></div></div></div></div></section>
-  <section id="sobre" class="section"><div class="container"><div class="about-title">odd.cut media</div><div class="about-copy">Criamos vídeo para marcas que precisam que a comunicação acompanhe o valor real do negócio. Respondemos rápido. Adaptamos. Entregamos com qualidade.</div></div></section>
-  <section class="section" style="padding-top:0"><div class="container"><div class="label">Way of work</div><h2>Como trabalhamos</h2><div class="process-line"></div><div class="grid-4"><div><div class="num">01</div><div class="stitle" style="font-size:20px">Briefing</div><div class="sdesc">Analisamos antes de produzir. Percebemos o negócio, o objetivo e a audiência.</div></div><div><div class="num">02</div><div class="stitle" style="font-size:20px">Estratégia</div><div class="sdesc">Definimos o formato, o tom e a abordagem certa para cada projeto.</div></div><div><div class="num">03</div><div class="stitle" style="font-size:20px">Produção</div><div class="sdesc">Captação, realização e direção com equipa própria e parceiros de confiança.</div></div><div><div class="num">04</div><div class="stitle" style="font-size:20px">Entrega</div><div class="sdesc">Edição, motion graphics e entrega final nos formatos e prazos acordados.</div></div></div></div></section>
-  <section class="section" style="padding-top:0"><div class="container"><div class="label">Our team</div><h2> class="team-grid"><div><div class="portrait"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt=""></div><div class="name">Sandro Tordo</div><div class="role">Founder. Video Creation Specialist</div></div><div><div class="portrait"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt=""></div><div class="name">Maria João Coelho</div><div class="role">Founder. Video & Post-Production Specialist.</div></div></div></div></section>
-  <section id="contacto" class="section"><div class="container"><h2 style="font-size:clamp(54px,9vw,96px);font-weight:800">Fale connosco.</h2><div class="subtitle" style="margin-top:20px;opacity:.7">Tem um projeto em mente? Conte-nos.</div><div class="contact-grid"><div><div style="margin-bottom:36px"><div class="small-label">EMAIL</div><div class="value">oddcutmedia@oddcut.pt</div></div><div><div class="small-label">LOCALIZAÇÃO</div><div class="value">Lisboa, Portugal</div></div></div><form action="https://formspree.io/f/xpwljwja" method="POST"><input class="field" name="name" placeholder="Nome" required /><input class="field" name="email" type="email" placeholder="Email" required /><input class="field" name="subject" placeholder="Assunto" required /><textarea class="field" name="message" placeholder="Mensagem" required></textarea><button class="btn" type="submit">enviar</button></form></div></div></section>
-  <section class="section center" style="padding-top:0"><div class="container"><h2 style="font-size:clamp(48px,8vw,72px);font-weight:800">Tem um projeto?</h2><div class="subtitle" style="margin-inline:auto;opacity:.7">Fale connosco.</div><a class="btn" href="#contacto">entrar em contacto</a></div></section>
-  <footer><div class="container"><div class="footer-grid"><div class="logo">odd.cut media</div><div class="footer-links"><a class="footer-meta">odd.cut media © 2026 · Lisboa · oddcutmedia@oddcut.pt</div></div><div class="socials"><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div></footer>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">odd.cut media</a>
+      <nav class="nav-links">
+        <a href="#trabalho">work</a>
+        <a href="#sobre">about us</a>
+        <a href="#contacto">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <iframe
+      src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&muted=1&loop=1&autopause=0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      title="Showreel">
+    </iframe>
+    <div class="overlay"></div>
+    <div class="container hero-copy fade-in">
+      <h1>Video that communicates.</h1>
+      <p class="subtitle">We create content for brands that need to be seen, remembered and chosen.</p>
+      <a class="btn" href="https://vimeo.com/76979871" target="_blank" rel="noopener">► Showreel</a>
+    </div>
+  </section>
+
+  <section class="section fade-in">
+    <div class="container">
+      <div class="label">Services</div>
+      <h2>What we do</h2>
+
+      <div class="services">
+        <div class="service">
+          <div class="line"></div>
+          <div class="num">01</div>
+          <div class="stitle">Brand</div>
+          <div class="sdesc">Content that builds brand value over time.</div>
+        </div>
+
+        <div class="service">
+          <div class="line"></div>
+          <div class="num">02</div>
+          <div class="stitle">Events</div>
+          <div class="sdesc">Video coverage for the moments that define your company.</div>
+        </div>
+
+        <div class="service">
+          <div class="line"></div>
+          <div class="num">03</div>
+          <div class="stitle">Campaign</div>
+          <div class="sdesc">Communication with purpose. Immediate attention, concrete results.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in" style="padding-top:0">
+    <div class="container stats" id="stats-section">
+      <div class="card">
+        <div class="big stat-number" data-target="15">0</div>
+        <div class="muted">Years of combined experience</div>
+      </div>
+      <div class="card">
+        <div class="big stat-number" data-target="100" data-suffix="+">0</div>
+        <div class="muted">Projects delivered</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabalho" class="section fade-in">
+    <div class="container">
+      <h2 style="font-size:clamp(54px,9vw,96px);font-weight:800">Work.</h2>
+
+      <div class="work-rails">
+        <div>
+          <div class="rail-title">Brand</div>
+          <div class="grid-3">
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Brand Project 01</div>
+            </a>
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Brand Project 02</div>
+            </a>
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Brand Project 03</div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="rail-title">Product</div>
+          <div class="grid-3">
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Product Project 01</div>
+            </a>
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Product Project 02</div>
+            </a>
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Product Project 03</div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="rail-title">Campaign</div>
+          <div class="grid-3">
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Campaign Project 01</div>
+            </a>
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Campaign Project 02</div>
+            </a>
+            <a class="project" href="#">
+              <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="caption">Campaign Project 03</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="section fade-in">
+    <div class="container">
+      <div class="about-title">odd.cut media</div>
+      <div class="about-copy">
+        We create video for brands that need their communication to match the real value of the business.
+        We respond fast. We adapt. We deliver with quality.
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in" style="padding-top:0">
+    <div class="container">
+      <div class="label">Way of work</div>
+      <h2>How we work</h2>
+      <div class="process-line"></div>
+
+      <div class="grid-4">
+        <div>
+          <div class="num">01</div>
+          <div class="stitle" style="font-size:20px">Briefing</div>
+          <div class="sdesc">We listen before we produce. We understand the business, the goal and the audience.</div>
+        </div>
+        <div>
+          <div class="num">02</div>
+          <div class="stitle" style="font-size:20px">Strategy</div>
+          <div class="sdesc">We define the right format, tone and approach for each project.</div>
+        </div>
+        <div>
+          <div class="num">03</div>
+          <div class="stitle" style="font-size:20px">Production</div>
+          <div class="sdesc">Filming, directing and execution with our own team and trusted partners.</div>
+        </div>
+        <div>
+          <div class="num">04</div>
+          <div class="stitle" style="font-size:20px">Delivery</div>
+          <div class="sdesc">Editing, motion graphics and final delivery in the agreed formats and deadlines.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in" style="padding-top:0">
+    <div class="container">
+      <div class="label">Our team</div>
+      <h2>The Team</h2>
+
+      <div class="team-grid">
+        <div>
+          <div class="portrait">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt="">
+          </div>
+          <div class="name">Sandro Tordo</div>
+          <div class="role">Founder. Video Creation Specialist</div>
+        </div>
+
+        <div>
+          <div class="portrait">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="">
+          </div>
+          <div class="name">Maria João Coelho</div>
+          <div class="role">Founder. Video & Post-Production Specialist</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section fade-in">
+    <div class="container">
+      <h2 style="font-size:clamp(54px,9vw,96px);font-weight:800">Contact us.</h2>
+      <div class="subtitle" style="margin-top:20px;opacity:.7">Have a project in mind? Tell us about it.</div>
+
+      <div class="contact-grid">
+        <div>
+          <div style="margin-bottom:36px">
+            <div class="small-label">Email</div>
+            <div class="value">oddcutmedia@oddcut.pt</div>
+          </div>
+
+          <div>
+            <div class="small-label">Location</div>
+            <div class="value">Lisbon, Portugal</div>
+          </div>
+        </div>
+
+        <form action="https://formspree.io/f/xpwljwja" method="POST">
+          <input class="field" name="name" placeholder="Name" required />
+          <input class="field" name="email" type="email" placeholder="Email" required />
+          <input class="field" name="subject" placeholder="Subject" required />
+          <textarea class="field" name="message" placeholder="Message" required></textarea>
+          <button class="btn" type="submit">send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section center fade-in" style="padding-top:0">
+    <div class="container">
+      <h2 style="font-size:clamp(48px,8vw,72px);font-weight:800">Have a project?</h2>
+      <div class="subtitle" style="margin-inline:auto;opacity:.7">Talk to us.</div>
+      <a class="btn" href="#contacto">get in touch</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="logo">odd.cut media</div>
+
+        <div class="footer-links">
+          <a href="#trabalho">work</a>
+          <a href="#sobre">about us</a>
+          <a href="#contacto">contact</a>
+        </div>
+
+        <div class="footer-meta">odd.cut media © 2026 · Lisbon · oddcutmedia@oddcut.pt</div>
+      </div>
+
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    faders.forEach((el) => fadeObserver.observe(el));
+
+    const counters = document.querySelectorAll('.stat-number');
+    let statsAnimated = false;
+
+    function animateCounter(element) {
+      const target = parseInt(element.getAttribute('data-target'), 10);
+      const suffix = element.getAttribute('data-suffix') || '';
+      const duration = 1800;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(eased * target);
+
+        element.textContent = progress === 1 ? `${target}${suffix}` : `${value}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const statsSection = document.getElementById('stats-section');
+
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsAnimated) {
+            statsAnimated = true;
+            counters.forEach(animateCounter);
+            statsObserver.unobserve(statsSection);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      statsObserver.observe(statsSection);
+    }
+  </script>
 </body>
 </html>
