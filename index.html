@@ -1,40 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>odd.cut media</title>
   <meta
     name="description"
-    content="Portuguese corporate video production studio based in Lisbon."
+    content="odd.cut media — Portuguese corporate video production studio based in Lisbon."
   />
+
+  <!-- League Spartan -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;700;800&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
       --bg: #0d0d0d;
-      --bg-soft: #121212;
-      --card: #171717;
-      --card-2: #1d1d1d;
+      --bg-hero: #111111;
+      --card: #1a1a1a;
       --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.72);
-      --soft: rgba(255, 255, 255, 0.58);
-      --line: rgba(255, 255, 255, 0.1);
-
-      --cyan: #68d8ff;
-      --orange: #ff8b57;
-
-      --radius-lg: 28px;
-      --radius-md: 22px;
-      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.28);
-
-      --container: 1480px;
-      --nav-h: 84px;
+      --text-80: rgba(255, 255, 255, 0.8);
+      --text-65: rgba(255, 255, 255, 0.65);
+      --text-50: rgba(255, 255, 255, 0.5);
+      --text-40: rgba(255, 255, 255, 0.4);
+      --text-30: rgba(255, 255, 255, 0.3);
+      --line-25: rgba(255, 255, 255, 0.25);
+      --line-15: rgba(255, 255, 255, 0.15);
+      --line-10: rgba(255, 255, 255, 0.1);
+      --transition: 0.3s ease;
+      --nav-height: 84px;
+      --container: 1440px;
     }
 
     * {
@@ -47,20 +46,12 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at top left, rgba(104, 216, 255, 0.03), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(255, 139, 87, 0.04), transparent 24%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: "League Spartan", sans-serif;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+      overflow-x: hidden;
     }
 
     img {
@@ -68,141 +59,72 @@
       max-width: 100%;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     button,
     input,
     textarea {
       font: inherit;
+      color: inherit;
     }
 
     .container {
-      width: min(var(--container), calc(100% - 40px));
+      width: min(var(--container), calc(100% - 120px));
       margin: 0 auto;
     }
 
     .section {
-      padding: 112px 0;
-      position: relative;
+      background: var(--bg);
     }
 
-    .section-tight {
-      padding-top: 0;
+    .section-pad {
+      padding: 120px 0;
     }
 
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 46px;
-    }
-
-    .section-copy {
-      max-width: 460px;
-      color: var(--soft);
-      font-size: 17px;
-      line-height: 1.55;
-      font-weight: 300;
-      margin: 0;
-    }
-
-    .label {
-      display: inline-block;
-      margin-bottom: 14px;
-      color: var(--soft);
+    .section-label {
+      margin: 0 0 14px;
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
+      font-weight: 500;
+      letter-spacing: 4px;
       text-transform: uppercase;
+      color: var(--text-40);
     }
 
-    h1,
-    h2,
-    h3,
-    p {
-      margin: 0;
-    }
-
-    h1 {
-      font-size: clamp(48px, 7.2vw, 84px);
-      line-height: 0.95;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      max-width: 8ch;
-    }
-
-    h2 {
-      font-size: clamp(32px, 4vw, 56px);
-      line-height: 0.96;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      min-height: 50px;
-      padding: 0 22px;
-      border: 1px solid rgba(255, 255, 255, 0.66);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(104, 216, 255, 0.08), transparent 42%),
-        radial-gradient(circle at 80% 80%, rgba(255, 139, 87, 0.08), transparent 42%),
-        rgba(255, 255, 255, 0.02);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 999px;
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      color: #000;
-      background: #fff;
-      border-color: #fff;
-      box-shadow:
-        0 0 26px rgba(104, 216, 255, 0.12),
-        0 0 36px rgba(255, 139, 87, 0.08);
-    }
-
-    .fade-up {
+    .fade-in {
       opacity: 0;
-      transform: translateY(32px);
-      transition:
-        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
       will-change: opacity, transform;
     }
 
-    .fade-up.visible {
+    .fade-in.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* NAV */
-
-    .nav {
+    /* =========================
+       NAVIGATION
+    ========================= */
+    .site-header {
       position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 100;
-      height: var(--nav-h);
-      display: flex;
-      align-items: center;
-      background: linear-gradient(to bottom, rgba(13, 13, 13, 0.84), rgba(13, 13, 13, 0));
-      backdrop-filter: blur(8px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: var(--nav-height);
+      transition: background-color var(--transition);
+      background: transparent;
+    }
+
+    .site-header.is-scrolled {
+      background: var(--bg);
     }
 
     .nav-inner {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -210,548 +132,672 @@
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 40px;
-    }
-
-    .logo-img {
-      height: 40px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .symbol-mini {
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      opacity: 0.84;
-      filter: drop-shadow(0 0 10px rgba(104, 216, 255, 0.16));
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
 
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.84);
+    .nav-links a,
+    .mobile-menu a {
       font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: lowercase;
-      transition:
-        color 0.25s ease,
-        transform 0.25s ease;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: opacity var(--transition);
     }
 
-    .nav-links a:hover {
-      color: var(--cyan);
-      transform: translateY(-1px);
+    .nav-links a:hover,
+    .mobile-menu a:hover {
+      opacity: 0.7;
     }
 
-    /* HERO */
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+    }
 
+    .menu-toggle span {
+      position: absolute;
+      left: 10px;
+      width: 24px;
+      height: 1px;
+      background: var(--text);
+      transition: transform var(--transition), opacity var(--transition), top var(--transition);
+    }
+
+    .menu-toggle span:nth-child(1) { top: 15px; }
+    .menu-toggle span:nth-child(2) { top: 22px; }
+    .menu-toggle span:nth-child(3) { top: 29px; }
+
+    .menu-toggle.is-active span:nth-child(1) {
+      top: 22px;
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-active span:nth-child(3) {
+      top: 22px;
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity var(--transition), visibility var(--transition);
+      z-index: 900;
+    }
+
+    .mobile-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .mobile-menu-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
     .hero {
       position: relative;
-      min-height: 100svh;
-      display: flex;
-      align-items: end;
+      min-height: 100vh;
+      background: var(--bg-hero);
       overflow: hidden;
-      background: #000;
-      padding-top: var(--nav-h);
     }
 
-    .hero iframe {
+    /* REPLACE: hero video */
+    .hero-media-placeholder {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 177.78vh;
-      min-width: 100%;
-      height: 56.25vw;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
-      border: 0;
-      pointer-events: none;
-      opacity: 0.82;
+      inset: 0;
+      background: #111111;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 16% 24%, rgba(104, 216, 255, 0.14), transparent 28%),
-        radial-gradient(circle at 84% 78%, rgba(255, 139, 87, 0.12), transparent 28%),
-        linear-gradient(to top, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.24)),
-        rgba(0, 0, 0, 0.42);
+      background: rgba(0, 0, 0, 0.6);
     }
 
-    .hero-copy {
+    .hero-inner {
       position: relative;
-      z-index: 2;
-      padding: 0 0 58px 0;
-      max-width: 820px;
-    }
-
-    .hero-actions {
+      min-height: 100vh;
       display: flex;
-      gap: 14px;
-      margin-top: 26px;
-      flex-wrap: wrap;
+      align-items: flex-end;
+      padding: calc(var(--nav-height) + 20px) 0 60px;
     }
 
-    .hero-symbol {
-      position: absolute;
-      right: clamp(24px, 5vw, 76px);
-      top: 50%;
-      width: min(22vw, 230px);
-      opacity: 0.08;
-      transform: translateY(-50%);
-      filter: blur(1px) drop-shadow(0 0 44px rgba(104, 216, 255, 0.18));
-      pointer-events: none;
-      z-index: 1;
+    .hero-content {
+      max-width: 720px;
     }
 
-    /* SERVICES */
+    .hero-title {
+      margin: 0;
+      font-size: 88px;
+      line-height: 0.92;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
 
-    .services {
+    .hero-subtitle {
+      margin: 20px 0 0;
+      max-width: 500px;
+      font-size: 18px;
+      line-height: 1.55;
+      font-weight: 300;
+      color: var(--text-80);
+    }
+
+    .button-outline,
+    .button-solid {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 24px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      transition: background-color var(--transition), color var(--transition), opacity var(--transition), border-color var(--transition);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .button-outline {
+      border: 1px solid var(--text);
+      background: transparent;
+      color: var(--text);
+      margin-top: 28px;
+    }
+
+    .button-outline:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button-solid {
+      width: 100%;
+      border: 0;
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button-solid:hover {
+      opacity: 0.85;
+    }
+
+    /* =========================
+       CLIENTS
+    ========================= */
+    .clients {
+      padding: 40px 0;
+      overflow: hidden;
+    }
+
+    .clients-label {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-40);
+    }
+
+    .ticker {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 24s linear infinite;
+    }
+
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-right: 18px;
+      flex-shrink: 0;
+    }
+
+    .client-logo {
+      min-width: 180px;
+      height: 68px;
+      background: var(--card);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-50);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+    .services-head {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+
+    .services-title {
+      margin: 0;
+      font-size: 56px;
+      line-height: 0.95;
+      font-weight: 800;
+    }
+
+    .services-intro {
+      margin: 0;
+      max-width: 460px;
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--text-80);
+    }
+
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 52px;
+      gap: 32px;
     }
 
-    .service {
-      padding-top: 18px;
+    .service-card {
+      border-top: 1px solid var(--text);
+      padding-top: 22px;
     }
 
-    .service-line {
-      width: 100%;
-      height: 1px;
-      margin-bottom: 22px;
-      background: linear-gradient(
-        to right,
-        rgba(104, 216, 255, 0.9),
-        rgba(255, 139, 87, 0.56),
-        rgba(255, 255, 255, 0.16)
-      );
-    }
-
-    .service-num {
-      font-size: 34px;
-      font-weight: 800;
+    .service-number {
+      margin: 0;
+      font-size: 48px;
       line-height: 1;
+      font-weight: 800;
     }
 
-    .service-title {
-      margin-top: 16px;
-      font-size: 21px;
-      line-height: 1.05;
+    .service-name {
+      margin: 18px 0 0;
+      font-size: 22px;
+      line-height: 1.1;
       font-weight: 700;
     }
 
-    .service-copy {
-      margin-top: 12px;
-      max-width: 32ch;
-      color: var(--soft);
+    .service-desc {
+      margin: 12px 0 0;
       font-size: 15px;
-      line-height: 1.62;
+      line-height: 1.6;
       font-weight: 300;
+      color: var(--text-65);
+      max-width: 28ch;
     }
 
-    /* STATS */
-
-    .stats {
+    /* =========================
+       STATS
+    ========================= */
+    .stats-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
 
-    .stat-card {
-      position: relative;
+    .stats-card {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 30px;
       min-height: 260px;
-      padding: 28px;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
-        var(--card);
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .stat-card::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      left: -70px;
-      bottom: -70px;
-      background: radial-gradient(circle, rgba(104, 216, 255, 0.16), transparent 66%);
-      pointer-events: none;
-    }
-
-    .stat-card:last-child::before {
-      left: auto;
-      right: -70px;
-      background: radial-gradient(circle, rgba(255, 139, 87, 0.16), transparent 66%);
-    }
-
-    .stat-value {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(64px, 9vw, 104px);
-      line-height: 0.95;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-    }
-
-    .stat-copy {
-      position: relative;
-      z-index: 1;
-      color: var(--soft);
-      font-size: 15px;
-      line-height: 1.45;
-      font-weight: 300;
-    }
-
-    /* WORK */
-
-    .work-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 28px;
-    }
-
-    .work-mark {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-      opacity: 0.82;
-      filter: drop-shadow(0 0 14px rgba(104, 216, 255, 0.18));
-      flex: 0 0 auto;
-    }
-
-    .selected-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .project {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: var(--radius-md);
-      background: var(--card-2);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      cursor: pointer;
-      transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.45s ease,
-        border-color 0.45s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-4px) scale(1.01);
-      border-color: rgba(104, 216, 255, 0.18);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .project img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.74;
-      transform: scale(1.001);
-      transition:
-        opacity 0.55s ease,
-        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .project:hover img {
-      opacity: 1;
-      transform: scale(1.06);
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 20%, rgba(104, 216, 255, 0.14), transparent 32%),
-        radial-gradient(circle at 82% 84%, rgba(255, 139, 87, 0.18), transparent 34%),
-        linear-gradient(to top, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.08));
-    }
-
-    .project-caption {
-      position: absolute;
-      inset: auto 0 0 0;
-      z-index: 2;
-      padding: 20px;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .project-title {
-      font-size: 18px;
-      line-height: 1.05;
-      font-weight: 700;
-      transform: translateY(10px);
-      opacity: 0;
-      transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.45s ease;
-    }
-
-    .project:hover .project-title {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .play-badge {
-      width: 54px;
-      height: 54px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(104, 216, 255, 0.16), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(255, 139, 87, 0.16), transparent 55%),
-        rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(12px);
-      display: grid;
-      place-items: center;
-      transform: scale(0.88);
-      opacity: 0;
-      transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.45s ease,
-        background 0.25s ease,
-        color 0.25s ease;
-    }
-
-    .play-badge svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-      margin-left: 2px;
-    }
-
-    .project:hover .play-badge {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    .project:hover .play-badge:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    /* ABOUT */
-
-    .about-title {
-      font-size: clamp(44px, 10vw, 108px);
+    .stats-value {
+      margin: 0;
+      font-size: 120px;
       line-height: 0.9;
       font-weight: 800;
       letter-spacing: -0.04em;
     }
 
-    .about-copy {
-      max-width: 760px;
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
+    .stats-label {
+      margin: 20px 0 0;
+      font-size: 16px;
+      line-height: 1.4;
       font-weight: 300;
+      color: var(--text-80);
     }
 
-    /* PROCESS */
+    /* =========================
+       WORK
+    ========================= */
+    .work-title {
+      margin: 0 0 54px;
+      font-size: 88px;
+      line-height: 0.9;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .work-rail + .work-rail {
+      margin-top: 42px;
+    }
+
+    .rail-name {
+      margin: 0 0 18px;
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .rail-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .rail-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .rail-track.is-dragging {
+      cursor: grabbing;
+    }
+
+    .project-card {
+      position: relative;
+      flex: 0 0 480px;
+      width: 480px;
+      height: 320px;
+      background: var(--card);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform var(--transition);
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+
+    /* REPLACE: project image */
+    .project-image {
+      position: absolute;
+      inset: 0;
+      background: #1a1a1a;
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      transition: opacity var(--transition);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-name {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+    .about-title {
+      margin: 0;
+      font-size: 140px;
+      line-height: 0.9;
+      font-weight: 800;
+      letter-spacing: -4px;
+    }
+
+    .about-copy {
+      margin: 28px 0 0;
+      max-width: 640px;
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--text-80);
+    }
+
+    .process-wrap {
+      margin-top: 100px;
+    }
+
+    .process-title {
+      margin: 0;
+      font-size: 56px;
+      line-height: 0.95;
+      font-weight: 800;
+    }
 
     .process-line {
       width: 100%;
       height: 1px;
-      margin: 34px 0 26px;
-      background: linear-gradient(
-        to right,
-        rgba(104, 216, 255, 0.45),
-        rgba(255, 139, 87, 0.35),
-        rgba(255, 255, 255, 0.18)
-      );
+      background: var(--line-15);
+      margin: 28px 0 34px;
     }
 
     .process-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      gap: 26px;
     }
 
-    .process-num {
-      font-size: 34px;
+    .process-card-number {
+      margin: 0;
+      font-size: 42px;
       line-height: 1;
       font-weight: 800;
     }
 
-    .process-title {
-      margin-top: 14px;
-      font-size: 18px;
-      line-height: 1.08;
+    .process-card-title {
+      margin: 16px 0 0;
+      font-size: 20px;
+      line-height: 1.1;
       font-weight: 700;
     }
 
-    .process-copy {
-      margin-top: 10px;
-      color: var(--soft);
+    .process-card-desc {
+      margin: 12px 0 0;
       font-size: 15px;
-      line-height: 1.58;
+      line-height: 1.6;
       font-weight: 300;
+      color: var(--text-65);
+      max-width: 26ch;
     }
 
-    /* TEAM */
+    .team-wrap {
+      margin-top: 100px;
+    }
+
+    .team-title {
+      margin: 0;
+      font-size: 56px;
+      line-height: 0.95;
+      font-weight: 800;
+    }
 
     .team-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      margin-top: 46px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
     }
 
     .team-card {
       display: block;
     }
 
-    .portrait {
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      border-radius: 26px;
-      background: var(--card-2);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.45s ease;
-    }
-
-    .portrait:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .portrait img {
+    /* REPLACE: team photo 1 / team photo 2 */
+    .team-photo {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .portrait:hover img {
-      transform: scale(1.04);
+      aspect-ratio: 3 / 4;
+      background: var(--card);
+      border-radius: 6px;
     }
 
     .team-name {
-      margin-top: 16px;
+      margin: 16px 0 0;
       font-size: 22px;
-      line-height: 1.05;
+      line-height: 1.1;
       font-weight: 700;
     }
 
     .team-role {
-      margin-top: 4px;
-      color: var(--soft);
+      margin: 6px 0 0;
       font-size: 15px;
-      line-height: 1.45;
+      line-height: 1.5;
       font-weight: 300;
+      color: var(--text-65);
     }
 
-    /* CONTACT */
+    .about-stats {
+      margin-top: 80px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+    .contact-title {
+      margin: 0;
+      font-size: 88px;
+      line-height: 0.9;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 56px;
-      margin-top: 40px;
-    }
-
-    .contact-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--soft);
-    }
-
-    .contact-value {
-      margin-top: 10px;
-      font-size: 18px;
-      line-height: 1.2;
-      font-weight: 700;
+      margin-top: 44px;
     }
 
     .contact-block + .contact-block {
-      margin-top: 30px;
+      margin-top: 34px;
     }
 
-    .field {
-      width: 100%;
-      padding: 15px 0;
-      border: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.28);
-      background: transparent;
-      color: #fff;
-      font-size: 15px;
-      line-height: 1.4;
-      font-weight: 300;
-      outline: 0;
-      transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+    .contact-label {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-40);
     }
 
-    .field:focus {
-      border-bottom-color: var(--cyan);
-      box-shadow: 0 1px 0 rgba(104, 216, 255, 0.2);
-    }
-
-    textarea.field {
-      min-height: 120px;
-      resize: vertical;
+    .contact-value {
+      margin: 10px 0 0;
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 700;
     }
 
     .form-stack {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
-    /* CTA */
-
-    .cta-wrap {
-      max-width: 780px;
-      margin: 0 auto;
+    .field {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid var(--line-25);
+      background: transparent;
+      padding: 16px 0;
+      outline: none;
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 300;
+      color: var(--text);
+      transition: border-color var(--transition);
     }
 
-    /* FOOTER */
+    .field:focus {
+      border-bottom-color: rgba(255, 255, 255, 0.8);
+    }
 
-    footer {
-      padding: 28px 0 22px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    .field::placeholder {
+      color: var(--text-30);
+    }
+
+    textarea.field {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-cta {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .contact-cta-title {
+      margin: 0;
+      font-size: 64px;
+      line-height: 0.95;
+      font-weight: 800;
+    }
+
+    .contact-cta-copy {
+      margin: 14px 0 0;
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 300;
+      color: var(--text-80);
+    }
+
+    .contact-cta .button-outline {
+      margin-top: 24px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+    .site-footer {
+      border-top: 1px solid var(--line-10);
+      padding: 60px 0;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-      align-items: center;
+      gap: 24px;
+      align-items: start;
     }
 
-    .footer-logo {
-      height: 24px;
-      width: auto;
-      object-fit: contain;
+    .footer-col,
+    .footer-links,
+    .footer-meta,
+    .footer-socials {
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 300;
+      color: var(--text-50);
+    }
+
+    .footer-brand {
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 300;
+      color: var(--text-50);
     }
 
     .footer-links {
@@ -761,176 +807,116 @@
       flex-wrap: wrap;
     }
 
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: lowercase;
-    }
-
-    .footer-links a:hover {
-      color: var(--cyan);
-    }
-
     .footer-meta {
-      color: rgba(255, 255, 255, 0.58);
-      font-size: 12px;
-      line-height: 1.4;
-      font-weight: 300;
       text-align: right;
     }
 
-    .socials {
-      margin-top: 16px;
+    .footer-bottom {
+      margin-top: 20px;
       display: flex;
-      gap: 16px;
+      justify-content: flex-start;
+      gap: 18px;
     }
 
-    .socials a {
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 12px;
-      line-height: 1.2;
-      letter-spacing: 0.06em;
-      text-transform: none;
+    .footer-bottom a:hover,
+    .footer-links a:hover {
+      color: var(--text);
     }
 
-    .socials a:hover {
-      color: var(--cyan);
-    }
-
-    /* MODAL */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(10px);
-    }
-
-    .modal.open {
-      display: flex;
-    }
-
-    .modal-inner {
-      position: relative;
-      width: min(1400px, 100%);
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 22px;
-      background: #000;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-      transform: translateY(16px) scale(0.985);
-      opacity: 0;
-      transition:
-        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.35s ease;
-    }
-
-    .modal.open .modal-inner {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-
-    .modal iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      background: #000;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 2;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(104, 216, 255, 0.16), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(255, 139, 87, 0.16), transparent 55%),
-        rgba(0, 0, 0, 0.35);
-      color: #fff;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      backdrop-filter: blur(8px);
-      transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
-    }
-
-    .modal-close:hover {
-      background: #fff;
-      color: #000;
-      transform: scale(1.04);
-    }
-
-    .modal-close svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
-      stroke-width: 2;
-      fill: none;
-    }
-
-    @media (max-width: 900px) {
+    /* =========================
+       RESPONSIVE
+    ========================= */
+    @media (max-width: 768px) {
       :root {
-        --nav-h: 74px;
+        --nav-height: 72px;
       }
 
       .container {
-        width: min(var(--container), calc(100% - 28px));
+        width: calc(100% - 32px);
       }
 
-      .nav-links,
-      .symbol-mini,
-      .work-mark {
+      .section-pad,
+      .section {
+        padding: 88px 0;
+      }
+
+      .nav-links {
         display: none;
       }
 
-      .section {
-        padding: 78px 0;
-      }
-
-      .hero-copy {
-        padding-bottom: 38px;
-      }
-
-      .hero-symbol {
-        width: 38vw;
-        right: 18px;
-      }
-
-      .services,
-      .stats,
-      .process-grid,
-      .team-grid,
-      .contact-grid,
-      .footer-grid,
-      .selected-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head,
-      .work-head {
+      .menu-toggle {
         display: block;
       }
 
-      .section-copy {
-        margin-top: 14px;
+      .brand {
+        font-size: 20px;
       }
 
-      .stat-card {
-        min-height: 220px;
+      .hero-inner {
+        padding-bottom: 40px;
+      }
+
+      .hero-title {
+        font-size: 44px;
+        max-width: 9ch;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .services-head,
+      .services-grid,
+      .stats-grid,
+      .process-grid,
+      .team-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-head {
+        gap: 22px;
+        margin-bottom: 38px;
+      }
+
+      .services-title,
+      .process-title,
+      .team-title {
+        font-size: 40px;
+      }
+
+      .stats-value {
+        font-size: 82px;
+      }
+
+      .stats-card {
+        min-height: 210px;
+      }
+
+      .work-title,
+      .contact-title {
+        font-size: 44px;
+      }
+
+      .project-card {
+        flex-basis: 88vw;
+        width: 88vw;
+        height: 58vw;
+        max-height: 320px;
+      }
+
+      .about-title {
+        font-size: 56px;
+        letter-spacing: -2px;
+      }
+
+      .about-copy {
+        font-size: 18px;
+      }
+
+      .contact-cta-title {
+        font-size: 42px;
       }
 
       .footer-links,
@@ -938,432 +924,553 @@
         justify-content: flex-start;
         text-align: left;
       }
-
-      .modal {
-        padding: 12px;
-      }
-
-      .modal-inner {
-        width: 100%;
-        border-radius: 16px;
-      }
-
-      .logo-img {
-        height: 32px;
-      }
     }
   </style>
 </head>
 <body>
-  <header class="nav">
+  <!-- =========================
+       FIXED NAVIGATION
+  ========================== -->
+  <header class="site-header" id="siteHeader">
     <div class="container nav-inner">
-      <a href="#home" class="brand" aria-label="odd.cut media home">
-        <img src="/logo.png" alt="odd.cut media" class="logo-img" />
-        <img src="/symbol.png" alt="" class="symbol-mini" />
-      </a>
+      <a href="#home" class="brand">odd.cut media</a>
 
-      <nav class="nav-links">
-        <a href="#trabalho">work</a>
-        <a href="#sobre">about</a>
-        <a href="#contacto">contact</a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#trabalho">trabalho</a>
+        <a href="#sobre">sobre nós</a>
+        <a href="#contacto">contacto</a>
       </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <section id="home" class="hero">
-    <iframe
-      src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&muted=1&loop=1&autopause=0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      title="Showreel"
-    ></iframe>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu-inner" aria-label="Menu mobile">
+      <a href="#trabalho">trabalho</a>
+      <a href="#sobre">sobre nós</a>
+      <a href="#contacto">contacto</a>
+    </nav>
+  </div>
 
-    <div class="hero-overlay"></div>
-    <img src="/symbol.png" alt="" class="hero-symbol" />
+  <!-- =========================
+       HERO
+  ========================== -->
+  <section class="section hero" id="home">
+    <!-- REPLACE: hero video -->
+    <div class="hero-media-placeholder" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
-    <div class="container hero-copy fade-up">
-      <h1>Video that communicates.</h1>
-
-      <div class="hero-actions">
-        <a class="btn" href="https://vimeo.com/76979871" target="_blank" rel="noopener">► Showreel</a>
+    <div class="container hero-inner">
+      <div class="hero-content fade-in">
+        <h1 class="hero-title">Vídeo que comunica.</h1>
+        <p class="hero-subtitle">
+          Criamos conteúdo para marcas que precisam
+          de ser vistas, lembradas e escolhidas.
+        </p>
+        <a href="#trabalho" class="button-outline">► showreel</a>
       </div>
     </div>
   </section>
 
-  <section class="section fade-up">
+  <!-- =========================
+       CLIENTS
+  ========================== -->
+  <section class="section clients" id="clientes">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="label">Services</span>
-          <h2>What we do</h2>
+      <p class="clients-label fade-in">marcas que confiam em nós</p>
+    </div>
+
+    <div class="ticker fade-in" aria-label="Ticker de marcas">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <div class="client-logo">marca 01</div>
+          <div class="client-logo">marca 02</div>
+          <div class="client-logo">marca 03</div>
+          <div class="client-logo">marca 04</div>
+          <div class="client-logo">marca 05</div>
+          <div class="client-logo">marca 06</div>
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+          <div class="client-logo">marca 01</div>
+          <div class="client-logo">marca 02</div>
+          <div class="client-logo">marca 03</div>
+          <div class="client-logo">marca 04</div>
+          <div class="client-logo">marca 05</div>
+          <div class="client-logo">marca 06</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       SERVICES
+  ========================== -->
+  <section class="section section-pad" id="servicos">
+    <div class="container">
+      <div class="services-head">
+        <div class="fade-in">
+          <p class="section-label">serviços</p>
+          <h2 class="services-title">O que fazemos</h2>
         </div>
 
-        <p class="section-copy">
-          Strategic video production for brands that need clarity, speed and strong visual communication.
+        <p class="services-intro fade-in">
+          Produção de vídeo estratégico para marcas
+          que precisam de comunicar com consistência e qualidade.
         </p>
       </div>
 
-      <div class="services">
-        <article class="service">
-          <div class="service-line"></div>
-          <div class="service-num">01</div>
-          <h3 class="service-title">Brand</h3>
-          <p class="service-copy">Content that builds long-term brand value and visual consistency.</p>
+      <div class="services-grid">
+        <article class="service-card fade-in">
+          <p class="service-number">01</p>
+          <h3 class="service-name">Brand</h3>
+          <p class="service-desc">Conteúdo que constrói marca ao longo do tempo.</p>
         </article>
 
-        <article class="service">
-          <div class="service-line"></div>
-          <div class="service-num">02</div>
-          <h3 class="service-title">Events</h3>
-          <p class="service-copy">Sharp, high-quality coverage for the moments that define your company.</p>
+        <article class="service-card fade-in">
+          <p class="service-number">02</p>
+          <h3 class="service-name">Product</h3>
+          <p class="service-desc">Vídeo focado no produto. Claro, direto e convincente.</p>
         </article>
 
-        <article class="service">
-          <div class="service-line"></div>
-          <div class="service-num">03</div>
-          <h3 class="service-title">Campaign</h3>
-          <p class="service-copy">Purpose-driven communication designed to capture attention and drive action.</p>
+        <article class="service-card fade-in">
+          <p class="service-number">03</p>
+          <h3 class="service-name">Campaign</h3>
+          <p class="service-desc">Comunicação com objetivo. Atenção imediata, resultado concreto.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section section-tight fade-up">
-    <div class="container stats" id="stats-section">
-      <article class="stat-card">
-        <div class="stat-value stat-number" data-target="15">0</div>
-        <div class="stat-copy">Years of combined experience</div>
-      </article>
-
-      <article class="stat-card">
-        <div class="stat-value stat-number" data-target="100" data-suffix="+">0</div>
-        <div class="stat-copy">Projects delivered</div>
-      </article>
-    </div>
-  </section>
-
-  <section id="trabalho" class="section fade-up">
+  <!-- =========================
+       STATS
+  ========================== -->
+  <section class="section" id="stats">
     <div class="container">
-      <div class="work-head">
-        <div>
-          <span class="label">Work</span>
-          <h2>Selected projects</h2>
-        </div>
-
-        <img src="/symbol.png" alt="" class="work-mark" />
-      </div>
-
-      <div class="selected-grid">
-        <article class="project" data-vimeo="76979871">
-          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=80" alt="Project 01" />
-          <div class="project-overlay"></div>
-          <div class="project-caption">
-            <div class="project-title">Project 01</div>
-            <div class="play-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-          </div>
+      <div class="stats-grid">
+        <article class="stats-card fade-in">
+          <p class="stats-value">15</p>
+          <p class="stats-label">Anos de experiência conjunta</p>
         </article>
 
-        <article class="project" data-vimeo="327080067">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80" alt="Project 02" />
-          <div class="project-overlay"></div>
-          <div class="project-caption">
-            <div class="project-title">Project 02</div>
-            <div class="play-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-          </div>
-        </article>
-
-        <article class="project" data-vimeo="148751763">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="Project 03" />
-          <div class="project-overlay"></div>
-          <div class="project-caption">
-            <div class="project-title">Project 03</div>
-            <div class="play-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-          </div>
-        </article>
-
-        <article class="project" data-vimeo="22439234">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80" alt="Project 04" />
-          <div class="project-overlay"></div>
-          <div class="project-caption">
-            <div class="project-title">Project 04</div>
-            <div class="play-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-          </div>
-        </article>
-
-        <article class="project" data-vimeo="1084537">
-          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=80" alt="Project 05" />
-          <div class="project-overlay"></div>
-          <div class="project-caption">
-            <div class="project-title">Project 05</div>
-            <div class="play-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-          </div>
-        </article>
-
-        <article class="project" data-vimeo="395212534">
-          <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1400&q=80" alt="Project 06" />
-          <div class="project-overlay"></div>
-          <div class="project-caption">
-            <div class="project-title">Project 06</div>
-            <div class="play-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-          </div>
+        <article class="stats-card fade-in">
+          <p class="stats-value">100+</p>
+          <p class="stats-label">Projetos entregues</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="sobre" class="section fade-up">
+  <!-- =========================
+       TRABALHO
+  ========================== -->
+  <section class="section section-pad" id="trabalho">
     <div class="container">
-      <span class="label">About</span>
-      <div class="about-title">odd.cut media</div>
-      <div class="about-copy">
-        We create video for brands that need their communication to match the real value of the business.
-        We respond fast. We adapt. We deliver with quality.
+      <div class="fade-in">
+        <p class="section-label">trabalho</p>
+        <h2 class="work-title">Trabalho.</h2>
       </div>
-    </div>
-  </section>
 
-  <section class="section section-tight fade-up">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="label">Way of work</span>
-          <h2>How we work</h2>
+      <div class="work-rail fade-in">
+        <h3 class="rail-name">Brand</h3>
+        <div class="rail-track js-drag-scroll">
+          <article class="project-card">
+            <!-- REPLACE: project image brand 1 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Brand 01</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <!-- REPLACE: project image brand 2 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Brand 02</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <!-- REPLACE: project image brand 3 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Brand 03</p>
+            </div>
+          </article>
         </div>
       </div>
 
-      <div class="process-line"></div>
+      <div class="work-rail fade-in">
+        <h3 class="rail-name">Product</h3>
+        <div class="rail-track js-drag-scroll">
+          <article class="project-card">
+            <!-- REPLACE: project image product 1 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Product 01</p>
+            </div>
+          </article>
 
-      <div class="process-grid">
-        <article>
-          <div class="process-num">01</div>
-          <h3 class="process-title">Briefing</h3>
-          <p class="process-copy">We listen before we produce. We understand the business, the goal and the audience.</p>
-        </article>
+          <article class="project-card">
+            <!-- REPLACE: project image product 2 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Product 02</p>
+            </div>
+          </article>
 
-        <article>
-          <div class="process-num">02</div>
-          <h3 class="process-title">Strategy</h3>
-          <p class="process-copy">We define the right format, tone and approach for each project.</p>
-        </article>
+          <article class="project-card">
+            <!-- REPLACE: project image product 3 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Product 03</p>
+            </div>
+          </article>
+        </div>
+      </div>
 
-        <article>
-          <div class="process-num">03</div>
-          <h3 class="process-title">Production</h3>
-          <p class="process-copy">Filming, directing and execution with our own team and trusted partners.</p>
-        </article>
+      <div class="work-rail fade-in">
+        <h3 class="rail-name">Campaign</h3>
+        <div class="rail-track js-drag-scroll">
+          <article class="project-card">
+            <!-- REPLACE: project image campaign 1 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Campaign 01</p>
+            </div>
+          </article>
 
-        <article>
-          <div class="process-num">04</div>
-          <h3 class="process-title">Delivery</h3>
-          <p class="process-copy">Editing, motion graphics and final delivery in the agreed formats and deadlines.</p>
-        </article>
+          <article class="project-card">
+            <!-- REPLACE: project image campaign 2 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Campaign 02</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <!-- REPLACE: project image campaign 3 -->
+            <div class="project-image"></div>
+            <div class="project-overlay">
+              <p class="project-name">Projeto Campaign 03</p>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-tight fade-up">
+  <!-- =========================
+       SOBRE NÓS
+  ========================== -->
+  <section class="section section-pad" id="sobre">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="label">Our team</span>
-          <h2>The Team</h2>
+      <div class="fade-in">
+        <p class="section-label">sobre nós</p>
+        <h2 class="about-title">odd.cut media</h2>
+        <p class="about-copy">
+          Criamos vídeo para marcas que precisam que a comunicação
+          acompanhe o valor real do negócio. Respondemos rápido.
+          Adaptamos. Entregamos com qualidade.
+        </p>
+      </div>
+
+      <!-- PROCESSO -->
+      <div class="process-wrap">
+        <div class="fade-in">
+          <p class="section-label">processo</p>
+          <h3 class="process-title">Como trabalhamos</h3>
+        </div>
+
+        <div class="process-line fade-in"></div>
+
+        <div class="process-grid">
+          <article class="fade-in">
+            <p class="process-card-number">01</p>
+            <h4 class="process-card-title">Briefing</h4>
+            <p class="process-card-desc">
+              Ouvimos antes de produzir. Percebemos o negócio,
+              o objetivo e a audiência.
+            </p>
+          </article>
+
+          <article class="fade-in">
+            <p class="process-card-number">02</p>
+            <h4 class="process-card-title">Estratégia</h4>
+            <p class="process-card-desc">
+              Definimos o formato, o tom e a abordagem certa
+              para cada projeto.
+            </p>
+          </article>
+
+          <article class="fade-in">
+            <p class="process-card-number">03</p>
+            <h4 class="process-card-title">Produção</h4>
+            <p class="process-card-desc">
+              Captação, realização e direção com equipa própria
+              e parceiros de confiança.
+            </p>
+          </article>
+
+          <article class="fade-in">
+            <p class="process-card-number">04</p>
+            <h4 class="process-card-title">Entrega</h4>
+            <p class="process-card-desc">
+              Edição, motion graphics e entrega final nos formatos
+              e prazos acordados.
+            </p>
+          </article>
         </div>
       </div>
 
-      <div class="team-grid">
-        <article class="team-card">
-          <div class="portrait">
-            <img src="/sandro.jpg" alt="Sandro Tordo" />
-          </div>
-          <div class="team-name">Sandro Tordo</div>
-          <div class="team-role">Founder. Video Creation Specialist</div>
-        </article>
+      <!-- EQUIPA -->
+      <div class="team-wrap">
+        <div class="fade-in">
+          <p class="section-label">equipa</p>
+          <h3 class="team-title">A Equipa</h3>
+        </div>
 
-        <article class="team-card">
-          <div class="portrait">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="Maria João Coelho" />
-          </div>
-          <div class="team-name">Maria João Coelho</div>
-          <div class="team-role">Founder. Video & Post-Production Specialist</div>
-        </article>
+        <div class="team-grid">
+          <article class="team-card fade-in">
+            <!-- REPLACE: team photo 1 -->
+            <div class="team-photo"></div>
+            <p class="team-name">Nome da Pessoa</p>
+            <p class="team-role">Cargo / Função</p>
+          </article>
+
+          <article class="team-card fade-in">
+            <!-- REPLACE: team photo 2 -->
+            <div class="team-photo"></div>
+            <p class="team-name">Nome da Pessoa</p>
+            <p class="team-role">Cargo / Função</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- SAME STATS AS SECTION 4 -->
+      <div class="about-stats">
+        <div class="stats-grid">
+          <article class="stats-card fade-in">
+            <p class="stats-value">15</p>
+            <p class="stats-label">Anos de experiência conjunta</p>
+          </article>
+
+          <article class="stats-card fade-in">
+            <p class="stats-value">100+</p>
+            <p class="stats-label">Projetos entregues</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contacto" class="section fade-up">
+  <!-- =========================
+       CONTACTO
+  ========================== -->
+  <section class="section section-pad" id="contacto">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="label">Contact</span>
-          <h2>Contact us.</h2>
-        </div>
+      <div class="fade-in">
+        <p class="section-label">contacto</p>
+        <h2 class="contact-title">Fale connosco.</h2>
       </div>
 
       <div class="contact-grid">
-        <div>
+        <div class="fade-in">
           <div class="contact-block">
-            <div class="contact-label">Email</div>
-            <div class="contact-value">oddcutmedia@oddcut.pt</div>
+            <p class="contact-label">Email</p>
+            <p class="contact-value">oddcutmedia@oddcut.pt</p>
           </div>
 
           <div class="contact-block">
-            <div class="contact-label">Location</div>
-            <div class="contact-value">Lisbon, Portugal</div>
+            <p class="contact-label">Localização</p>
+            <p class="contact-value">Lisboa, Portugal</p>
           </div>
         </div>
 
-        <form action="https://formspree.io/f/xpwljwja" method="POST" class="form-stack">
-          <input class="field" name="name" placeholder="Name" required />
-          <input class="field" name="email" type="email" placeholder="Email" required />
-          <input class="field" name="subject" placeholder="Subject" required />
-          <textarea class="field" name="message" placeholder="Message" required></textarea>
-          <button class="btn" type="submit">send</button>
+        <form class="form-stack fade-in">
+          <input class="field" type="text" name="nome" placeholder="Nome" />
+          <input class="field" type="email" name="email" placeholder="Email" />
+          <input class="field" type="text" name="assunto" placeholder="Assunto" />
+          <textarea class="field" name="mensagem" rows="5" placeholder="Mensagem"></textarea>
+          <button class="button-solid" type="submit">enviar</button>
         </form>
       </div>
-    </div>
-  </section>
 
-  <section class="section center section-tight fade-up">
-    <div class="container cta-wrap">
-      <h2>Have a project?</h2>
-      <div style="margin-top: 20px;">
-        <a class="btn" href="#contacto">get in touch</a>
+      <div class="contact-cta fade-in">
+        <h3 class="contact-cta-title">Tem um projeto?</h3>
+        <p class="contact-cta-copy">Fale connosco. Sem compromisso.</p>
+        <a href="#contacto" class="button-outline">entrar em contacto</a>
       </div>
     </div>
   </section>
 
-  <footer>
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <img src="/logo.png" alt="odd.cut media" class="footer-logo" />
+        <div class="footer-col">
+          <p class="footer-brand">odd.cut media</p>
         </div>
 
         <div class="footer-links">
-          <a href="#trabalho">work</a>
-          <a href="#sobre">about</a>
-          <a href="#contacto">contact</a>
+          <a href="#trabalho">trabalho</a>
+          <a href="#sobre">sobre nós</a>
+          <a href="#contacto">contacto</a>
         </div>
 
-        <div class="footer-meta">odd.cut media © 2026 · Lisbon · oddcutmedia@oddcut.pt</div>
+        <div class="footer-meta">
+          odd.cut media © 2026 · Lisboa · oddcutmedia@oddcut.pt
+        </div>
       </div>
 
-      <div class="socials">
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
+      <div class="footer-bottom">
+        <a href="#" class="footer-socials">Instagram</a>
+        <a href="#" class="footer-socials">LinkedIn</a>
       </div>
     </div>
   </footer>
 
-  <div class="modal" id="videoModal" aria-hidden="true">
-    <div class="modal-inner">
-      <button class="modal-close" id="modalClose" aria-label="Close video">
-        <svg viewBox="0 0 24 24">
-          <path d="M6 6L18 18M18 6L6 18"></path>
-        </svg>
-      </button>
-      <iframe id="modalFrame" src="" allow="autoplay; fullscreen; picture-in-picture" title="Project video"></iframe>
-    </div>
-  </div>
-
   <script>
-    const fadeItems = document.querySelectorAll('.fade-up');
+    // =========================
+    // NAV BACKGROUND ON SCROLL
+    // =========================
+    const siteHeader = document.getElementById("siteHeader");
 
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    fadeItems.forEach((item) => fadeObserver.observe(item));
-
-    const counters = document.querySelectorAll('.stat-number');
-    let statsAnimated = false;
-
-    function animateCounter(element) {
-      const target = parseInt(element.getAttribute('data-target'), 10);
-      const suffix = element.getAttribute('data-suffix') || '';
-      const duration = 1800;
-      const startTime = performance.now();
-
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const value = Math.floor(eased * target);
-
-        element.textContent = progress === 1 ? `${target}${suffix}` : `${value}${suffix}`;
-
-        if (progress < 1) requestAnimationFrame(update);
+    function handleHeaderScroll() {
+      if (window.scrollY > 16) {
+        siteHeader.classList.add("is-scrolled");
+      } else {
+        siteHeader.classList.remove("is-scrolled");
       }
-
-      requestAnimationFrame(update);
     }
 
-    const statsSection = document.getElementById('stats-section');
+    handleHeaderScroll();
+    window.addEventListener("scroll", handleHeaderScroll);
 
-    if (statsSection) {
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !statsAnimated) {
-            statsAnimated = true;
-            counters.forEach(animateCounter);
-            statsObserver.unobserve(statsSection);
-          }
+    // =========================
+    // MOBILE MENU
+    // =========================
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("is-open");
+      menuToggle.classList.remove("is-active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    function openMobileMenu() {
+      mobileMenu.classList.add("is-open");
+      menuToggle.classList.add("is-active");
+      menuToggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.contains("is-open");
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
+    });
+
+    // =========================
+    // SMOOTH SCROLL OFFSET FIX
+    // =========================
+    const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
+
+    allAnchorLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const targetId = link.getAttribute("href");
+        const target = document.querySelector(targetId);
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        const headerOffset = document.getElementById("siteHeader").offsetHeight;
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset + 2;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: "smooth"
         });
-      }, { threshold: 0.4 });
-
-      statsObserver.observe(statsSection);
-    }
-
-    const modal = document.getElementById('videoModal');
-    const modalFrame = document.getElementById('modalFrame');
-    const modalClose = document.getElementById('modalClose');
-    const projects = document.querySelectorAll('.project');
-
-    function openModal(vimeoId) {
-      modalFrame.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      modalFrame.src = '';
-      document.body.style.overflow = '';
-    }
-
-    projects.forEach((project) => {
-      project.addEventListener('click', () => {
-        const vimeoId = project.getAttribute('data-vimeo');
-        if (vimeoId) openModal(vimeoId);
       });
     });
 
-    modalClose.addEventListener('click', closeModal);
+    // =========================
+    // FADE IN ON SCROLL
+    // =========================
+    const fadeItems = document.querySelectorAll(".fade-in");
 
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) closeModal();
+    const fadeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add("is-visible");
+          fadeObserver.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    fadeItems.forEach((item, index) => {
+      item.style.transitionDelay = `${(index % 6) * 0.1}s`;
+      fadeObserver.observe(item);
     });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeModal();
+    // =========================
+    // HORIZONTAL DRAG SCROLL
+    // =========================
+    const dragRails = document.querySelectorAll(".js-drag-scroll");
+
+    dragRails.forEach((rail) => {
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      rail.addEventListener("mousedown", (e) => {
+        isDown = true;
+        rail.classList.add("is-dragging");
+        startX = e.pageX - rail.offsetLeft;
+        scrollLeft = rail.scrollLeft;
+      });
+
+      rail.addEventListener("mouseleave", () => {
+        isDown = false;
+        rail.classList.remove("is-dragging");
+      });
+
+      rail.addEventListener("mouseup", () => {
+        isDown = false;
+        rail.classList.remove("is-dragging");
+      });
+
+      rail.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - rail.offsetLeft;
+        const walk = (x - startX) * 1.2;
+        rail.scrollLeft = scrollLeft - walk;
+      });
     });
   </script>
 </body>
