@@ -8,861 +8,1172 @@
     name="description"
     content="odd.cut media — Portuguese corporate video production studio based in Lisbon."
   />
+  <meta name="theme-color" content="#0a0a0a" />
 
-  <!-- League Spartan -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;500;700;800&display=swap"
     rel="stylesheet"
   />
 
   <style>
-    :root {
-      --bg: #0d0d0d;
-      --bg-hero: #111111;
-      --card: #1a1a1a;
-      --text: #ffffff;
-      --text-80: rgba(255, 255, 255, 0.8);
-      --text-65: rgba(255, 255, 255, 0.65);
-      --text-50: rgba(255, 255, 255, 0.5);
-      --text-40: rgba(255, 255, 255, 0.4);
-      --text-30: rgba(255, 255, 255, 0.3);
-      --line-25: rgba(255, 255, 255, 0.25);
-      --line-15: rgba(255, 255, 255, 0.15);
-      --line-10: rgba(255, 255, 255, 0.1);
-      --transition: 0.3s ease;
-      --nav-height: 84px;
-      --container: 1440px;
+    :root{
+      --bg:#0a0a0a;
+      --bg-alt:#0f0f0f;
+      --card:#141414;
+      --text:#ffffff;
+      --text-70:rgba(255,255,255,0.70);
+      --text-60:rgba(255,255,255,0.60);
+      --text-55:rgba(255,255,255,0.55);
+      --text-50:rgba(255,255,255,0.50);
+      --text-40:rgba(255,255,255,0.40);
+      --text-35:rgba(255,255,255,0.35);
+      --text-30:rgba(255,255,255,0.30);
+      --text-25:rgba(255,255,255,0.25);
+      --text-06:rgba(255,255,255,0.06);
+      --border:rgba(255,255,255,0.08);
+      --border-soft:rgba(255,255,255,0.06);
+      --border-faint:rgba(255,255,255,0.04);
+      --ease:cubic-bezier(0.16, 1, 0.3, 1);
+      --container:1520px;
+      --nav-h:86px;
+      --section-pad:160px;
+      --radius-card:12px;
+      --radius-sm:8px;
+      --shadow:0 24px 60px rgba(0,0,0,0.28);
     }
 
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    *::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-width:320px;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"League Spartan",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      overflow-x:hidden;
+      position:relative;
     }
 
-    html {
-      scroll-behavior: smooth;
+    /* Global grain texture overlay */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:9999;
+      opacity:.03;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size:180px 180px;
+      mix-blend-mode:screen;
     }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "League Spartan", sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit;color:inherit}
+    button{cursor:pointer}
+    input,textarea{min-width:0}
+
+    .container{
+      width:min(var(--container), calc(100% - 80px));
+      margin-inline:auto;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
+    .section{
+      position:relative;
+      padding-block:var(--section-pad);
+      overflow:clip;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .section--dark{background:var(--bg)}
+    .section--alt{background:var(--bg-alt)}
+
+    .label{
+      display:block;
+      margin:0 0 18px;
+      font:500 11px/1 "League Spartan",sans-serif;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      color:var(--text-35);
     }
 
-    button,
-    input,
-    textarea {
-      font: inherit;
-      color: inherit;
+    .body{
+      margin:0;
+      font:300 17px/1.7 "League Spartan",sans-serif;
+      color:var(--text-70);
     }
 
-    .container {
-      width: min(var(--container), calc(100% - 120px));
-      margin: 0 auto;
+    .body--soft{
+      color:var(--text-60);
     }
 
-    .section {
-      background: var(--bg);
+    .body--sm{
+      font-size:15px;
+      line-height:1.6;
     }
 
-    .section-pad {
-      padding: 120px 0;
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition:
+        opacity .8s var(--ease),
+        transform .8s var(--ease);
+      will-change:opacity,transform;
     }
 
-    .section-label {
-      margin: 0 0 14px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--text-40);
+    .fade-up.is-visible{
+      opacity:1;
+      transform:translateY(0);
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-      will-change: opacity, transform;
+    .stagger > *{
+      opacity:0;
+      transform:translateY(24px);
+      transition:
+        opacity .8s var(--ease),
+        transform .8s var(--ease);
     }
 
-    .fade-in.is-visible {
-      opacity: 1;
-      transform: translateY(0);
+    .stagger.is-visible > *{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .stagger.is-visible > *:nth-child(1){transition-delay:.00s}
+    .stagger.is-visible > *:nth-child(2){transition-delay:.08s}
+    .stagger.is-visible > *:nth-child(3){transition-delay:.16s}
+    .stagger.is-visible > *:nth-child(4){transition-delay:.24s}
+    .stagger.is-visible > *:nth-child(5){transition-delay:.32s}
+    .stagger.is-visible > *:nth-child(6){transition-delay:.40s}
+
+    /* =========================
+       Navigation
+    ========================= */
+    .site-header{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      height:var(--nav-h);
+      background:linear-gradient(to bottom, rgba(10,10,10,.95), transparent);
+      transition:
+        background-color .4s ease,
+        border-color .4s ease,
+        backdrop-filter .4s ease;
+      border-bottom:1px solid transparent;
+    }
+
+    .site-header.is-scrolled{
+      background:var(--bg);
+      border-bottom-color:rgba(255,255,255,.06);
+      backdrop-filter:blur(10px);
+    }
+
+    .nav-inner{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:inline-block;
+      font:700 15px/1 "League Spartan",sans-serif;
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+    }
+
+    .nav-link{
+      position:relative;
+      display:inline-block;
+      padding:8px 0;
+      font:500 12px/1 "League Spartan",sans-serif;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:var(--text-60);
+      transition:color .3s ease;
+    }
+
+    .nav-link::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-2px;
+      width:100%;
+      height:1px;
+      background:rgba(255,255,255,.92);
+      transform:scaleX(0);
+      transform-origin:left center;
+      transition:transform .3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active{
+      color:var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after{
+      transform:scaleX(1);
+    }
+
+    .menu-toggle{
+      display:none;
+      width:46px;
+      height:46px;
+      border:0;
+      background:transparent;
+      padding:0;
+      position:relative;
+    }
+
+    .menu-toggle span{
+      position:absolute;
+      left:11px;
+      width:24px;
+      height:1.5px;
+      background:var(--text);
+      transition:
+        transform .3s ease,
+        opacity .3s ease,
+        top .3s ease;
+    }
+
+    .menu-toggle span:nth-child(1){top:16px}
+    .menu-toggle span:nth-child(2){top:22px}
+    .menu-toggle span:nth-child(3){top:28px}
+
+    .menu-toggle.is-open span:nth-child(1){
+      top:22px;
+      transform:rotate(45deg);
+    }
+    .menu-toggle.is-open span:nth-child(2){
+      opacity:0;
+    }
+    .menu-toggle.is-open span:nth-child(3){
+      top:22px;
+      transform:rotate(-45deg);
+    }
+
+    .mobile-menu{
+      position:fixed;
+      inset:0;
+      z-index:950;
+      background:var(--bg);
+      display:grid;
+      place-items:center;
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:
+        opacity .35s ease,
+        visibility .35s ease;
+    }
+
+    .mobile-menu.is-open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-nav{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:24px;
+    }
+
+    .mobile-menu-link{
+      opacity:0;
+      transform:translateY(16px);
+      font:700 32px/1 "League Spartan",sans-serif;
+      letter-spacing:-1px;
+      text-transform:lowercase;
+      transition:
+        opacity .45s var(--ease),
+        transform .45s var(--ease);
+    }
+
+    .mobile-menu.is-open .mobile-menu-link{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .mobile-menu.is-open .mobile-menu-link:nth-child(1){transition-delay:.08s}
+    .mobile-menu.is-open .mobile-menu-link:nth-child(2){transition-delay:.14s}
+    .mobile-menu.is-open .mobile-menu-link:nth-child(3){transition-delay:.20s}
+
+    /* =========================
+       Hero
+    ========================= */
+    .hero{
+      min-height:100vh;
+      position:relative;
+      background:var(--bg);
+      overflow:hidden;
+    }
+
+    /* ============================================ */
+    /* REPLACE: Hero background video               */
+    /* Add: <video autoplay muted loop playsinline> */
+    /* ============================================ */
+    .hero-media{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.05), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.03), transparent 20%),
+        linear-gradient(135deg, #111 0%, #0c0c0c 100%);
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(10,10,10,1) 0%,
+          rgba(10,10,10,0.3) 50%,
+          rgba(10,10,10,0.1) 100%
+        );
+    }
+
+    .hero-content{
+      position:absolute;
+      left:60px;
+      bottom:80px;
+      z-index:2;
+      max-width:700px;
+    }
+
+    .hero-kicker{
+      margin:0 0 24px;
+      font:500 10px/1 "League Spartan",sans-serif;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      color:var(--text-35);
+    }
+
+    .hero-title{
+      margin:0;
+      font:800 96px/.95 "League Spartan",sans-serif;
+      letter-spacing:-3px;
+    }
+
+    .hero-copy{
+      margin:24px 0 0;
+      max-width:480px;
+      font:300 19px/1.6 "League Spartan",sans-serif;
+      color:var(--text-70);
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:40px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:15px 32px;
+      border-radius:40px;
+      border:1px solid transparent;
+      font:700 12px/1 "League Spartan",sans-serif;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      transition:
+        background-color .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        opacity .3s ease,
+        transform .3s ease;
+      white-space:nowrap;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .btn--primary{
+      background:#fff;
+      color:#0a0a0a;
+    }
+
+    .btn--primary:hover{
+      background:rgba(255,255,255,.85);
+    }
+
+    .btn--secondary{
+      background:transparent;
+      color:#fff;
+      border-color:rgba(255,255,255,.3);
+    }
+
+    .btn--secondary:hover{
+      border-color:rgba(255,255,255,.8);
+    }
+
+    .scroll-indicator{
+      position:absolute;
+      right:60px;
+      bottom:54px;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      animation:floatIndicator 2s ease-in-out infinite;
+    }
+
+    .scroll-line{
+      width:1px;
+      height:40px;
+      background:rgba(255,255,255,.3);
+    }
+
+    .scroll-text{
+      font:500 9px/1 "League Spartan",sans-serif;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.3);
+    }
+
+    @keyframes floatIndicator{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(8px)}
     }
 
     /* =========================
-       NAVIGATION
+       Clients
     ========================= */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      height: var(--nav-height);
-      transition: background-color var(--transition);
-      background: transparent;
+    .clients{
+      padding:60px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
 
-    .site-header.is-scrolled {
-      background: var(--bg);
+    .clients-label{
+      margin:0 0 40px;
+      text-align:center;
+      font:500 11px/1 "League Spartan",sans-serif;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      color:var(--text-25);
     }
 
-    .nav-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+    .ticker-stack{
+      display:grid;
+      gap:18px;
     }
 
-    .brand {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1;
-      white-space: nowrap;
+    .ticker{
+      position:relative;
+      overflow:hidden;
+      width:100%;
+      mask-image:linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image:linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
+    .ticker-track{
+      display:flex;
+      width:max-content;
+      align-items:center;
+      gap:60px;
+      will-change:transform;
     }
 
-    .nav-links a,
-    .mobile-menu a {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text);
-      transition: opacity var(--transition);
+    .ticker-left .ticker-track{
+      animation:tickerLeft 35s linear infinite;
     }
 
-    .nav-links a:hover,
-    .mobile-menu a:hover {
-      opacity: 0.7;
+    .ticker-right .ticker-track{
+      animation:tickerRight 45s linear infinite;
     }
 
-    .menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 0;
-      background: transparent;
-      padding: 0;
-      cursor: pointer;
-      position: relative;
+    .logo-pill{
+      width:100px;
+      height:36px;
+      border-radius:2px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.04);
+      flex:0 0 auto;
     }
 
-    .menu-toggle span {
-      position: absolute;
-      left: 10px;
-      width: 24px;
-      height: 1px;
-      background: var(--text);
-      transition: transform var(--transition), opacity var(--transition), top var(--transition);
+    @keyframes tickerLeft{
+      from{transform:translateX(0)}
+      to{transform:translateX(calc(-50% - 30px))}
     }
 
-    .menu-toggle span:nth-child(1) { top: 15px; }
-    .menu-toggle span:nth-child(2) { top: 22px; }
-    .menu-toggle span:nth-child(3) { top: 29px; }
-
-    .menu-toggle.is-active span:nth-child(1) {
-      top: 22px;
-      transform: rotate(45deg);
-    }
-
-    .menu-toggle.is-active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.is-active span:nth-child(3) {
-      top: 22px;
-      transform: rotate(-45deg);
-    }
-
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity var(--transition), visibility var(--transition);
-      z-index: 900;
-    }
-
-    .mobile-menu.is-open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .mobile-menu-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
+    @keyframes tickerRight{
+      from{transform:translateX(calc(-50% - 30px))}
+      to{transform:translateX(0)}
     }
 
     /* =========================
-       HERO
+       Services
     ========================= */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      background: var(--bg-hero);
-      overflow: hidden;
+    .services-head{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:60px;
+      align-items:start;
     }
 
-    /* REPLACE: hero video */
-    .hero-media-placeholder {
-      position: absolute;
-      inset: 0;
-      background: #111111;
+    .services-title{
+      margin:0;
+      font:800 72px/1 "League Spartan",sans-serif;
+      letter-spacing:-2px;
     }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+    .services-copy{
+      padding-top:16px;
+      margin:0;
+      font:300 17px/1.7 "League Spartan",sans-serif;
+      color:var(--text-60);
     }
 
-    .hero-inner {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      padding: calc(var(--nav-height) + 20px) 0 60px;
+    .divider{
+      height:1px;
+      background:rgba(255,255,255,.08);
+      margin:80px 0;
     }
 
-    .hero-content {
-      max-width: 720px;
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:32px;
     }
 
-    .hero-title {
-      margin: 0;
-      font-size: 88px;
-      line-height: 0.92;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+    .service{
+      border-top:2px solid #fff;
+      padding-top:32px;
+      position:relative;
     }
 
-    .hero-subtitle {
-      margin: 20px 0 0;
-      max-width: 500px;
-      font-size: 18px;
-      line-height: 1.55;
-      font-weight: 300;
-      color: var(--text-80);
+    .service-ghost{
+      margin:0;
+      font:800 56px/1 "League Spartan",sans-serif;
+      color:rgba(255,255,255,.15);
+      user-select:none;
     }
 
-    .button-outline,
-    .button-solid {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 24px;
-      border-radius: 40px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      transition: background-color var(--transition), color var(--transition), opacity var(--transition), border-color var(--transition);
-      cursor: pointer;
-      text-align: center;
+    .service-title{
+      margin:-20px 0 0;
+      font:700 26px/1.05 "League Spartan",sans-serif;
+      color:#fff;
     }
 
-    .button-outline {
-      border: 1px solid var(--text);
-      background: transparent;
-      color: var(--text);
-      margin-top: 28px;
-    }
-
-    .button-outline:hover {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .button-solid {
-      width: 100%;
-      border: 0;
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .button-solid:hover {
-      opacity: 0.85;
+    .service-text{
+      margin:12px 0 0;
+      max-width:30ch;
+      font:300 15px/1.6 "League Spartan",sans-serif;
+      color:var(--text-55);
     }
 
     /* =========================
-       CLIENTS
+       Stats
     ========================= */
-    .clients {
-      padding: 40px 0;
-      overflow: hidden;
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
     }
 
-    .clients-label {
-      margin: 0 0 18px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--text-40);
+    .stats-card{
+      position:relative;
+      overflow:hidden;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      padding:64px 56px;
+      min-height:320px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
     }
 
-    .ticker {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
+    .stats-card::after{
+      content:attr(data-ghost);
+      position:absolute;
+      top:-18px;
+      right:-8px;
+      font:800 300px/1 "League Spartan",sans-serif;
+      letter-spacing:-5px;
+      color:rgba(255,255,255,.03);
+      pointer-events:none;
+      user-select:none;
     }
 
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker 24s linear infinite;
+    .stats-number{
+      position:relative;
+      z-index:1;
+      margin:0;
+      font:800 120px/1 "League Spartan",sans-serif;
+      letter-spacing:-5px;
     }
 
-    .ticker-group {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding-right: 18px;
-      flex-shrink: 0;
-    }
-
-    .client-logo {
-      min-width: 180px;
-      height: 68px;
-      background: var(--card);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-50);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      user-select: none;
-    }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    .stats-text{
+      position:relative;
+      z-index:1;
+      margin:16px 0 0;
+      font:300 15px/1.4 "League Spartan",sans-serif;
+      color:var(--text-45);
+      letter-spacing:3px;
+      text-transform:uppercase;
     }
 
     /* =========================
-       SERVICES
+       Work
     ========================= */
-    .services-head {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 56px;
+    .work-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:40px;
     }
 
-    .services-title {
-      margin: 0;
-      font-size: 56px;
-      line-height: 0.95;
-      font-weight: 800;
+    .work-title{
+      margin:0;
+      font:800 72px/1 "League Spartan",sans-serif;
+      letter-spacing:-2px;
     }
 
-    .services-intro {
-      margin: 0;
-      max-width: 460px;
-      font-size: 18px;
-      line-height: 1.6;
-      font-weight: 300;
-      color: var(--text-80);
+    .work-link{
+      flex:0 0 auto;
+      font:500 14px/1 "League Spartan",sans-serif;
+      color:var(--text-40);
+      transition:color .3s ease;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+    .work-link:hover{
+      color:var(--text-80);
     }
 
-    .service-card {
-      border-top: 1px solid var(--text);
-      padding-top: 22px;
+    .rails{
+      margin-top:80px;
+      display:grid;
+      gap:80px;
     }
 
-    .service-number {
-      margin: 0;
-      font-size: 48px;
-      line-height: 1;
-      font-weight: 800;
+    .rail-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding-bottom:20px;
+      margin-bottom:32px;
     }
 
-    .service-name {
-      margin: 18px 0 0;
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 700;
+    .rail-label{
+      margin:0;
+      font:700 18px/1 "League Spartan",sans-serif;
+      color:var(--text-50);
+      letter-spacing:3px;
+      text-transform:uppercase;
     }
 
-    .service-desc {
-      margin: 12px 0 0;
-      font-size: 15px;
-      line-height: 1.6;
-      font-weight: 300;
-      color: var(--text-65);
-      max-width: 28ch;
+    .rail-meta{
+      margin:0;
+      font:300 13px/1 "League Spartan",sans-serif;
+      color:var(--text-25);
+    }
+
+    .rail-track{
+      display:flex;
+      gap:16px;
+      overflow-x:auto;
+      padding-bottom:8px;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      cursor:grab;
+      user-select:none;
+      -webkit-overflow-scrolling:touch;
+      scroll-behavior:smooth;
+    }
+
+    .rail-track::-webkit-scrollbar{
+      display:none;
+    }
+
+    .rail-track.is-dragging{
+      cursor:grabbing;
+    }
+
+    .project-card{
+      position:relative;
+      flex:0 0 440px;
+      width:440px;
+      height:300px;
+      border-radius:8px;
+      overflow:hidden;
+      background:#1a1a1a;
+      transition:transform .4s ease;
+      border:1px solid rgba(255,255,255,.04);
+    }
+
+    .project-card:hover{
+      transform:scale(1.02);
+    }
+
+    .project-media{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.07), transparent 24%),
+        linear-gradient(135deg, #1b1b1b 0%, #111 100%);
+      background-size:cover;
+      background-position:center;
+    }
+
+    .project-overlay{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity .4s ease;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.85) 0%,
+          rgba(0,0,0,0) 60%
+        );
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .project-card:hover .project-overlay{
+      opacity:1;
+    }
+
+    .project-info{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+    }
+
+    .project-tag{
+      margin:0;
+      font:700 10px/1 "League Spartan",sans-serif;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:var(--text-60);
+    }
+
+    .project-name{
+      margin:6px 0 0;
+      font:700 20px/1.1 "League Spartan",sans-serif;
+      color:#fff;
     }
 
     /* =========================
-       STATS
+       About
     ========================= */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .manifesto-line-1{
+      margin:0;
+      font:800 56px/.9 "League Spartan",sans-serif;
+      letter-spacing:-2px;
+      color:var(--text-40);
     }
 
-    .stats-card {
-      background: var(--card);
-      border-radius: 8px;
-      padding: 30px;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .manifesto-line-2{
+      margin:0;
+      font:800 120px/.9 "League Spartan",sans-serif;
+      letter-spacing:-4px;
+      color:#fff;
     }
 
-    .stats-value {
-      margin: 0;
-      font-size: 120px;
-      line-height: 0.9;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    .manifesto-copy-1{
+      margin:48px 0 0;
+      max-width:560px;
+      font:300 20px/1.7 "League Spartan",sans-serif;
+      color:rgba(255,255,255,.75);
     }
 
-    .stats-label {
-      margin: 20px 0 0;
-      font-size: 16px;
-      line-height: 1.4;
-      font-weight: 300;
-      color: var(--text-80);
+    .manifesto-copy-2{
+      margin:24px 0 0;
+      max-width:620px;
+      font:300 17px/1.7 "League Spartan",sans-serif;
+      color:var(--text-50);
+    }
+
+    .process-wrap{
+      margin-top:140px;
+    }
+
+    .subsection-title{
+      margin:0;
+      font:800 56px/1 "League Spartan",sans-serif;
+      letter-spacing:-2px;
+    }
+
+    .process-grid{
+      margin-top:64px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:26px;
+    }
+
+    .process-card{
+      border-top:1px solid rgba(255,255,255,.12);
+      padding-top:32px;
+      position:relative;
+    }
+
+    .process-ghost{
+      margin:0;
+      font:800 80px/1 "League Spartan",sans-serif;
+      color:rgba(255,255,255,.06);
+      user-select:none;
+    }
+
+    .process-title{
+      margin:-48px 0 0;
+      font:700 19px/1.1 "League Spartan",sans-serif;
+    }
+
+    .process-copy{
+      margin:12px 0 0;
+      max-width:28ch;
+      font:300 14px/1.6 "League Spartan",sans-serif;
+      color:var(--text-50);
+    }
+
+    .team-wrap{
+      margin-top:140px;
+    }
+
+    .team-grid{
+      margin-top:64px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+    }
+
+    .team-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:10px;
+      background:var(--card);
+      min-height:0;
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .team-image{
+      aspect-ratio:3/4;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01)),
+        #141414;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+
+    /* REPLACE: Team photo 1 — add background-image */
+    .team-image--1{}
+
+    /* REPLACE: Team photo 2 — add background-image */
+    .team-image--2{}
+
+    .team-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 50%);
+    }
+
+    .team-info{
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:28px;
+      z-index:1;
+    }
+
+    .team-name{
+      margin:0;
+      font:700 22px/1.1 "League Spartan",sans-serif;
+      color:#fff;
+    }
+
+    .team-role{
+      margin:4px 0 0;
+      font:300 14px/1.4 "League Spartan",sans-serif;
+      color:var(--text-55);
     }
 
     /* =========================
-       WORK
+       Contact
     ========================= */
-    .work-title {
-      margin: 0 0 54px;
-      font-size: 88px;
-      line-height: 0.9;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    .contact-title{
+      margin:0;
+      font:800 88px/1 "League Spartan",sans-serif;
+      letter-spacing:-3px;
     }
 
-    .work-rail + .work-rail {
-      margin-top: 42px;
+    .contact-grid{
+      margin-top:80px;
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:100px;
     }
 
-    .rail-name {
-      margin: 0 0 18px;
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 700;
+    .contact-left{
+      padding-top:8px;
     }
 
-    .rail-track {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      cursor: grab;
-      user-select: none;
-      -webkit-overflow-scrolling: touch;
+    .info-block + .info-block{
+      margin-top:48px;
     }
 
-    .rail-track::-webkit-scrollbar {
-      display: none;
+    .info-label{
+      margin:0;
+      font:500 11px/1 "League Spartan",sans-serif;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      color:var(--text-30);
     }
 
-    .rail-track.is-dragging {
-      cursor: grabbing;
+    .info-value{
+      margin:10px 0 0;
+      font:600 18px/1.35 "League Spartan",sans-serif;
+      color:#fff;
     }
 
-    .project-card {
-      position: relative;
-      flex: 0 0 480px;
-      width: 480px;
-      height: 320px;
-      background: var(--card);
-      border-radius: 6px;
-      overflow: hidden;
-      transition: transform var(--transition);
+    .info-manifesto{
+      margin:64px 0 0;
+      font:300 italic 14px/1.6 "League Spartan",sans-serif;
+      color:var(--text-30);
+      max-width:240px;
     }
 
-    .project-card:hover {
-      transform: scale(1.02);
+    .field-wrap{
+      position:relative;
+      margin-bottom:32px;
     }
 
-    /* REPLACE: project image */
-    .project-image {
-      position: absolute;
-      inset: 0;
-      background: #1a1a1a;
+    .field-label{
+      display:block;
+      margin:0 0 10px;
+      font:500 11px/1 "League Spartan",sans-serif;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:var(--text-30);
     }
 
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      opacity: 0;
-      transition: opacity var(--transition);
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
+    .field{
+      width:100%;
+      border:0;
+      border-bottom:1px solid rgba(255,255,255,.15);
+      background:transparent;
+      padding:14px 0;
+      outline:none;
+      font:300 16px/1.4 "League Spartan",sans-serif;
+      color:#fff;
+      transition:border-color .3s ease;
     }
 
-    .project-card:hover .project-overlay {
-      opacity: 1;
+    .field:focus{
+      border-bottom-color:rgba(255,255,255,.6);
     }
 
-    .project-name {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 700;
+    .field::placeholder{
+      color:rgba(255,255,255,.2);
+    }
+
+    textarea.field{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .submit-btn{
+      width:100%;
+      margin-top:16px;
+      border:0;
+      border-radius:6px;
+      background:#fff;
+      color:#0a0a0a;
+      padding:20px;
+      font:700 13px/1 "League Spartan",sans-serif;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      transition:background-color .3s ease, transform .3s ease;
+    }
+
+    .submit-btn:hover{
+      background:rgba(255,255,255,.88);
+      transform:translateY(-1px);
     }
 
     /* =========================
-       ABOUT
+       Final CTA
     ========================= */
-    .about-title {
-      margin: 0;
-      font-size: 140px;
-      line-height: 0.9;
-      font-weight: 800;
-      letter-spacing: -4px;
+    .final-cta{
+      text-align:center;
     }
 
-    .about-copy {
-      margin: 28px 0 0;
-      max-width: 640px;
-      font-size: 20px;
-      line-height: 1.6;
-      font-weight: 300;
-      color: var(--text-80);
+    .final-line{
+      width:60px;
+      height:1px;
+      background:rgba(255,255,255,.08);
+      margin:0 auto 60px;
     }
 
-    .process-wrap {
-      margin-top: 100px;
+    .final-title{
+      margin:0;
+      font:800 88px/1 "League Spartan",sans-serif;
+      letter-spacing:-3px;
     }
 
-    .process-title {
-      margin: 0;
-      font-size: 56px;
-      line-height: 0.95;
-      font-weight: 800;
+    .final-subtitle{
+      margin:20px 0 0;
+      font:300 20px/1.6 "League Spartan",sans-serif;
+      color:var(--text-50);
     }
 
-    .process-line {
-      width: 100%;
-      height: 1px;
-      background: var(--line-15);
-      margin: 28px 0 34px;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 26px;
-    }
-
-    .process-card-number {
-      margin: 0;
-      font-size: 42px;
-      line-height: 1;
-      font-weight: 800;
-    }
-
-    .process-card-title {
-      margin: 16px 0 0;
-      font-size: 20px;
-      line-height: 1.1;
-      font-weight: 700;
-    }
-
-    .process-card-desc {
-      margin: 12px 0 0;
-      font-size: 15px;
-      line-height: 1.6;
-      font-weight: 300;
-      color: var(--text-65);
-      max-width: 26ch;
-    }
-
-    .team-wrap {
-      margin-top: 100px;
-    }
-
-    .team-title {
-      margin: 0;
-      font-size: 56px;
-      line-height: 0.95;
-      font-weight: 800;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-
-    .team-card {
-      display: block;
-    }
-
-    /* REPLACE: team photo 1 / team photo 2 */
-    .team-photo {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      background: var(--card);
-      border-radius: 6px;
-    }
-
-    .team-name {
-      margin: 16px 0 0;
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 700;
-    }
-
-    .team-role {
-      margin: 6px 0 0;
-      font-size: 15px;
-      line-height: 1.5;
-      font-weight: 300;
-      color: var(--text-65);
-    }
-
-    .about-stats {
-      margin-top: 80px;
+    .final-cta .btn{
+      margin-top:40px;
     }
 
     /* =========================
-       CONTACT
+       Footer
     ========================= */
-    .contact-title {
-      margin: 0;
-      font-size: 88px;
-      line-height: 0.9;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    .site-footer{
+      border-top:1px solid rgba(255,255,255,.06);
+      background:var(--bg);
+      padding:60px 80px 40px;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 56px;
-      margin-top: 44px;
+    .footer-top{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:24px;
+      align-items:start;
     }
 
-    .contact-block + .contact-block {
-      margin-top: 34px;
+    .footer-brand{
+      margin:0;
+      font:700 14px/1 "League Spartan",sans-serif;
+      color:#fff;
     }
 
-    .contact-label {
-      margin: 0;
-      font-size: 11px;
-      line-height: 1.2;
-      font-weight: 500;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--text-40);
+    .footer-nav{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
-    .contact-value {
-      margin: 10px 0 0;
-      font-size: 20px;
-      line-height: 1.3;
-      font-weight: 700;
+    .footer-nav a{
+      font:500 12px/1 "League Spartan",sans-serif;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:var(--text-40);
+      transition:color .3s ease;
     }
 
-    .form-stack {
-      display: grid;
-      gap: 10px;
+    .footer-nav a:hover{
+      color:var(--text-80);
     }
 
-    .field {
-      width: 100%;
-      border: 0;
-      border-bottom: 1px solid var(--line-25);
-      background: transparent;
-      padding: 16px 0;
-      outline: none;
-      font-size: 16px;
-      line-height: 1.4;
-      font-weight: 300;
-      color: var(--text);
-      transition: border-color var(--transition);
+    .footer-email{
+      margin:0;
+      text-align:right;
+      font:300 13px/1.5 "League Spartan",sans-serif;
+      color:var(--text-40);
     }
 
-    .field:focus {
-      border-bottom-color: rgba(255, 255, 255, 0.8);
+    .footer-bottom{
+      margin-top:48px;
+      border-top:1px solid rgba(255,255,255,.04);
+      padding-top:32px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
-    .field::placeholder {
-      color: var(--text-30);
-    }
-
-    textarea.field {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    .contact-cta {
-      margin-top: 80px;
-      text-align: center;
-    }
-
-    .contact-cta-title {
-      margin: 0;
-      font-size: 64px;
-      line-height: 0.95;
-      font-weight: 800;
-    }
-
-    .contact-cta-copy {
-      margin: 14px 0 0;
-      font-size: 18px;
-      line-height: 1.5;
-      font-weight: 300;
-      color: var(--text-80);
-    }
-
-    .contact-cta .button-outline {
-      margin-top: 24px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-    .site-footer {
-      border-top: 1px solid var(--line-10);
-      padding: 60px 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .footer-col,
-    .footer-links,
     .footer-meta,
-    .footer-socials {
-      font-size: 13px;
-      line-height: 1.5;
-      font-weight: 300;
-      color: var(--text-50);
-    }
-
-    .footer-brand {
-      font-size: 13px;
-      line-height: 1.5;
-      font-weight: 300;
-      color: var(--text-50);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer-meta {
-      text-align: right;
-    }
-
-    .footer-bottom {
-      margin-top: 20px;
-      display: flex;
-      justify-content: flex-start;
-      gap: 18px;
-    }
-
-    .footer-bottom a:hover,
-    .footer-links a:hover {
-      color: var(--text);
+    .footer-social{
+      margin:0;
+      font:300 12px/1.4 "League Spartan",sans-serif;
+      color:var(--text-25);
     }
 
     /* =========================
-       RESPONSIVE
+       Responsive
     ========================= */
-    @media (max-width: 768px) {
-      :root {
-        --nav-height: 72px;
+    @media (max-width: 768px){
+      :root{
+        --nav-h:74px;
+        --section-pad:110px;
       }
 
-      .container {
-        width: calc(100% - 32px);
+      .container{
+        width:calc(100% - 32px);
       }
 
-      .section-pad,
-      .section {
-        padding: 88px 0;
+      .site-header{
+        height:var(--nav-h);
       }
 
-      .nav-links {
-        display: none;
+      .nav-links{
+        display:none;
       }
 
-      .menu-toggle {
-        display: block;
+      .menu-toggle{
+        display:block;
       }
 
-      .brand {
-        font-size: 20px;
+      .hero-content{
+        left:16px;
+        right:16px;
+        bottom:44px;
+        max-width:unset;
       }
 
-      .hero-inner {
-        padding-bottom: 40px;
+      .hero-kicker{
+        margin-bottom:20px;
+        letter-spacing:4px;
       }
 
-      .hero-title {
-        font-size: 44px;
-        max-width: 9ch;
+      .hero-title{
+        font-size:52px;
+        letter-spacing:-2px;
       }
 
-      .hero-subtitle {
-        font-size: 16px;
+      .hero-copy{
+        font-size:17px;
+        max-width:unset;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .scroll-indicator{
+        right:18px;
+        bottom:26px;
       }
 
       .services-head,
@@ -871,77 +1182,132 @@
       .process-grid,
       .team-grid,
       .contact-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .services-head {
-        gap: 22px;
-        margin-bottom: 38px;
+      .footer-top{
+        grid-template-columns:1fr;
       }
 
       .services-title,
-      .process-title,
-      .team-title {
-        font-size: 40px;
-      }
-
-      .stats-value {
-        font-size: 82px;
-      }
-
-      .stats-card {
-        min-height: 210px;
-      }
-
       .work-title,
-      .contact-title {
-        font-size: 44px;
+      .subsection-title{
+        font-size:40px;
+        letter-spacing:-1px;
       }
 
-      .project-card {
-        flex-basis: 88vw;
-        width: 88vw;
-        height: 58vw;
-        max-height: 320px;
+      .contact-title,
+      .final-title{
+        font-size:48px;
+        letter-spacing:-2px;
       }
 
-      .about-title {
-        font-size: 56px;
-        letter-spacing: -2px;
+      .manifesto-line-1{
+        font-size:34px;
       }
 
-      .about-copy {
-        font-size: 18px;
+      .manifesto-line-2{
+        font-size:64px;
+        letter-spacing:-2px;
       }
 
-      .contact-cta-title {
-        font-size: 42px;
+      .manifesto-copy-1{
+        font-size:18px;
       }
 
-      .footer-links,
-      .footer-meta {
-        justify-content: flex-start;
-        text-align: left;
+      .services-copy,
+      .body{
+        font-size:16px;
+      }
+
+      .stats-card{
+        min-height:260px;
+        padding:40px 28px;
+      }
+
+      .stats-number{
+        font-size:82px;
+        letter-spacing:-3px;
+      }
+
+      .stats-card::after{
+        font-size:180px;
+        top:18px;
+      }
+
+      .work-head{
+        display:block;
+      }
+
+      .work-link{
+        display:inline-block;
+        margin-top:18px;
+      }
+
+      .rails{
+        margin-top:56px;
+        gap:56px;
+      }
+
+      .project-card{
+        flex-basis:86vw;
+        width:86vw;
+        height:58vw;
+        max-height:280px;
+      }
+
+      .contact-grid{
+        gap:56px;
+      }
+
+      .site-footer{
+        padding-inline:16px;
+      }
+
+      .footer-nav,
+      .footer-email{
+        justify-content:flex-start;
+        text-align:left;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+      }
+      .fade-up,
+      .stagger > *{
+        opacity:1 !important;
+        transform:none !important;
       }
     }
   </style>
 </head>
 <body>
   <!-- =========================
-       FIXED NAVIGATION
+       Navigation
   ========================== -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-inner">
       <a href="#home" class="brand">odd.cut media</a>
 
       <nav class="nav-links" aria-label="Navegação principal">
-        <a href="#trabalho">trabalho</a>
-        <a href="#sobre">sobre nós</a>
-        <a href="#contacto">contacto</a>
+        <a class="nav-link" href="#trabalho">trabalho</a>
+        <a class="nav-link" href="#sobre">sobre nós</a>
+        <a class="nav-link" href="#contacto">contacto</a>
       </nav>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -949,278 +1315,370 @@
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-menu-inner" aria-label="Menu mobile">
-      <a href="#trabalho">trabalho</a>
-      <a href="#sobre">sobre nós</a>
-      <a href="#contacto">contacto</a>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu-nav">
+      <a class="mobile-menu-link" href="#trabalho">trabalho</a>
+      <a class="mobile-menu-link" href="#sobre">sobre nós</a>
+      <a class="mobile-menu-link" href="#contacto">contacto</a>
     </nav>
   </div>
 
   <!-- =========================
-       HERO
+       Hero
   ========================== -->
-  <section class="section hero" id="home">
-    <!-- REPLACE: hero video -->
-    <div class="hero-media-placeholder" aria-hidden="true"></div>
+  <section class="hero section section--dark" id="home">
+    <div class="hero-media" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <div class="container hero-inner">
-      <div class="hero-content fade-in">
-        <h1 class="hero-title">Vídeo que comunica.</h1>
-        <p class="hero-subtitle">
-          Criamos conteúdo para marcas que precisam
-          de ser vistas, lembradas e escolhidas.
-        </p>
-        <a href="#trabalho" class="button-outline">► showreel</a>
+    <div class="hero-content fade-up">
+      <p class="hero-kicker">PRODUÇÃO DE VÍDEO · LISBOA · PORTUGAL</p>
+      <h1 class="hero-title">Vídeo que comunica.<br></h1>
+      <p class="hero-copy">
+        Criamos conteúdo para marcas que precisam de ser
+        vistas, lembradas e escolhidas.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#trabalho" class="btn btn--primary">► showreel</a>
+        <a href="#trabalho" class="btn btn--secondary">ver o trabalho</a>
       </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">scroll</span>
     </div>
   </section>
 
   <!-- =========================
-       CLIENTS
+       Clients
   ========================== -->
-  <section class="section clients" id="clientes">
+  <section class="clients section section--dark" id="clientes">
     <div class="container">
-      <p class="clients-label fade-in">marcas que confiam em nós</p>
-    </div>
+      <p class="clients-label fade-up">algumas marcas com quem trabalhámos</p>
 
-    <div class="ticker fade-in" aria-label="Ticker de marcas">
-      <div class="ticker-track">
-        <div class="ticker-group">
-          <div class="client-logo">marca 01</div>
-          <div class="client-logo">marca 02</div>
-          <div class="client-logo">marca 03</div>
-          <div class="client-logo">marca 04</div>
-          <div class="client-logo">marca 05</div>
-          <div class="client-logo">marca 06</div>
+      <div class="ticker-stack fade-up">
+        <div class="ticker ticker-left" aria-label="logos row 1">
+          <div class="ticker-track">
+            <!-- REPLACE: Client logo 1 — add your image src -->
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+          </div>
         </div>
-        <div class="ticker-group" aria-hidden="true">
-          <div class="client-logo">marca 01</div>
-          <div class="client-logo">marca 02</div>
-          <div class="client-logo">marca 03</div>
-          <div class="client-logo">marca 04</div>
-          <div class="client-logo">marca 05</div>
-          <div class="client-logo">marca 06</div>
+
+        <div class="ticker ticker-right" aria-label="logos row 2">
+          <div class="ticker-track">
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+            <div class="logo-pill"></div>
+
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+            <div class="logo-pill" aria-hidden="true"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================
-       SERVICES
+       Services
   ========================== -->
-  <section class="section section-pad" id="servicos">
+  <section class="section section--alt" id="servicos">
     <div class="container">
       <div class="services-head">
-        <div class="fade-in">
-          <p class="section-label">serviços</p>
-          <h2 class="services-title">O que fazemos</h2>
+        <div class="fade-up">
+          <span class="label">o que fazemos</span>
+          <h2 class="services-title">Produção com<br>propósito.</h2>
         </div>
 
-        <p class="services-intro fade-in">
-          Produção de vídeo estratégico para marcas
-          que precisam de comunicar com consistência e qualidade.
+        <p class="services-copy fade-up">
+          Trabalhamos com marcas que precisam de comunicar
+          com consistência, qualidade e ritmo. Do briefing
+          à entrega final.
         </p>
       </div>
 
-      <div class="services-grid">
-        <article class="service-card fade-in">
-          <p class="service-number">01</p>
-          <h3 class="service-name">Brand</h3>
-          <p class="service-desc">Conteúdo que constrói marca ao longo do tempo.</p>
+      <div class="divider fade-up"></div>
+
+      <div class="services-grid stagger js-stagger">
+        <article class="service">
+          <p class="service-ghost">01</p>
+          <h3 class="service-title">Brand</h3>
+          <p class="service-text">
+            Conteúdo criado para construir
+            marca ao longo do tempo.
+          </p>
         </article>
 
-        <article class="service-card fade-in">
-          <p class="service-number">02</p>
-          <h3 class="service-name">Product</h3>
-          <p class="service-desc">Vídeo focado no produto. Claro, direto e convincente.</p>
+        <article class="service">
+          <p class="service-ghost">02</p>
+          <h3 class="service-title">Product</h3>
+          <p class="service-text">
+            Vídeo focado no produto.
+            Claro, direto e convincente.
+          </p>
         </article>
 
-        <article class="service-card fade-in">
-          <p class="service-number">03</p>
-          <h3 class="service-name">Campaign</h3>
-          <p class="service-desc">Comunicação com objetivo. Atenção imediata, resultado concreto.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       STATS
-  ========================== -->
-  <section class="section" id="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <article class="stats-card fade-in">
-          <p class="stats-value">15</p>
-          <p class="stats-label">Anos de experiência conjunta</p>
-        </article>
-
-        <article class="stats-card fade-in">
-          <p class="stats-value">100+</p>
-          <p class="stats-label">Projetos entregues</p>
+        <article class="service">
+          <p class="service-ghost">03</p>
+          <h3 class="service-title">Campaign</h3>
+          <p class="service-text">
+            Comunicação com objetivo.
+            Atenção imediata, resultado concreto.
+          </p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- =========================
-       TRABALHO
+       Stats
   ========================== -->
-  <section class="section section-pad" id="trabalho">
+  <section class="section section--dark" id="stats">
     <div class="container">
-      <div class="fade-in">
-        <p class="section-label">trabalho</p>
-        <h2 class="work-title">Trabalho.</h2>
+      <div class="stats-grid stagger js-stagger">
+        <article class="stats-card" data-ghost="15">
+          <p class="stats-number js-count" data-target="15">0</p>
+          <p class="stats-text">ANOS DE EXPERIÊNCIA CONJUNTA</p>
+        </article>
+
+        <article class="stats-card" data-ghost="100">
+          <p class="stats-number js-count" data-target="100" data-suffix="+">0</p>
+          <p class="stats-text">PROJETOS ENTREGUES</p>
+        </article>
       </div>
+    </div>
+  </section>
 
-      <div class="work-rail fade-in">
-        <h3 class="rail-name">Brand</h3>
-        <div class="rail-track js-drag-scroll">
-          <article class="project-card">
-            <!-- REPLACE: project image brand 1 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Brand 01</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <!-- REPLACE: project image brand 2 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Brand 02</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <!-- REPLACE: project image brand 3 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Brand 03</p>
-            </div>
-          </article>
+  <!-- =========================
+       Trabalho
+  ========================== -->
+  <section class="section section--alt" id="trabalho">
+    <div class="container">
+      <div class="work-head fade-up">
+        <div>
+          <span class="label">trabalho</span>
+          <h2 class="work-title">Trabalho selecionado.</h2>
         </div>
+
+        <a href="#contacto" class="work-link">Ver todos os projetos →</a>
       </div>
 
-      <div class="work-rail fade-in">
-        <h3 class="rail-name">Product</h3>
-        <div class="rail-track js-drag-scroll">
-          <article class="project-card">
-            <!-- REPLACE: project image product 1 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Product 01</p>
-            </div>
-          </article>
+      <div class="rails">
+        <div class="rail fade-up">
+          <div class="rail-head">
+            <p class="rail-label">brand</p>
+            <p class="rail-meta">03 projetos</p>
+          </div>
 
-          <article class="project-card">
-            <!-- REPLACE: project image product 2 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Product 02</p>
-            </div>
-          </article>
+          <div class="rail-track js-drag-scroll">
+            <article class="project-card">
+              <!-- REPLACE: brand project 1 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">brand</p>
+                  <p class="project-name">Projeto Brand 01</p>
+                </div>
+              </div>
+            </article>
 
-          <article class="project-card">
-            <!-- REPLACE: project image product 3 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Product 03</p>
-            </div>
-          </article>
+            <article class="project-card">
+              <!-- REPLACE: brand project 2 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">brand</p>
+                  <p class="project-name">Projeto Brand 02</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <!-- REPLACE: brand project 3 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">brand</p>
+                  <p class="project-name">Projeto Brand 03</p>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
 
-      <div class="work-rail fade-in">
-        <h3 class="rail-name">Campaign</h3>
-        <div class="rail-track js-drag-scroll">
-          <article class="project-card">
-            <!-- REPLACE: project image campaign 1 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Campaign 01</p>
-            </div>
-          </article>
+        <div class="rail fade-up">
+          <div class="rail-head">
+            <p class="rail-label">product</p>
+            <p class="rail-meta">03 projetos</p>
+          </div>
 
-          <article class="project-card">
-            <!-- REPLACE: project image campaign 2 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Campaign 02</p>
-            </div>
-          </article>
+          <div class="rail-track js-drag-scroll">
+            <article class="project-card">
+              <!-- REPLACE: product project 1 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">product</p>
+                  <p class="project-name">Projeto Product 01</p>
+                </div>
+              </div>
+            </article>
 
-          <article class="project-card">
-            <!-- REPLACE: project image campaign 3 -->
-            <div class="project-image"></div>
-            <div class="project-overlay">
-              <p class="project-name">Projeto Campaign 03</p>
-            </div>
-          </article>
+            <article class="project-card">
+              <!-- REPLACE: product project 2 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">product</p>
+                  <p class="project-name">Projeto Product 02</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <!-- REPLACE: product project 3 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">product</p>
+                  <p class="project-name">Projeto Product 03</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="rail fade-up">
+          <div class="rail-head">
+            <p class="rail-label">campaign</p>
+            <p class="rail-meta">03 projetos</p>
+          </div>
+
+          <div class="rail-track js-drag-scroll">
+            <article class="project-card">
+              <!-- REPLACE: campaign project 1 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">campaign</p>
+                  <p class="project-name">Projeto Campaign 01</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <!-- REPLACE: campaign project 2 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">campaign</p>
+                  <p class="project-name">Projeto Campaign 02</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <!-- REPLACE: campaign project 3 image — add background-image: url('your-image.jpg') -->
+              <div class="project-media"></div>
+              <div class="project-overlay">
+                <div class="project-info">
+                  <p class="project-tag">campaign</p>
+                  <p class="project-name">Projeto Campaign 03</p>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================
-       SOBRE NÓS
+       Sobre
   ========================== -->
-  <section class="section section-pad" id="sobre">
+  <section class="section section--dark" id="sobre">
     <div class="container">
-      <div class="fade-in">
-        <p class="section-label">sobre nós</p>
-        <h2 class="about-title">odd.cut media</h2>
-        <p class="about-copy">
+      <div class="fade-up">
+        <span class="label">sobre nós</span>
+        <p class="manifesto-line-1">somos a</p>
+        <h2 class="manifesto-line-2">odd.cut.</h2>
+
+        <p class="manifesto-copy-1">
           Criamos vídeo para marcas que precisam que a comunicação
-          acompanhe o valor real do negócio. Respondemos rápido.
-          Adaptamos. Entregamos com qualidade.
+          acompanhe o valor real do negócio.
+        </p>
+
+        <p class="manifesto-copy-2">
+          Respondemos rápido. Adaptamos. Entregamos com qualidade.
+          Mais do que produzir peças — construir relações de confiança.
         </p>
       </div>
 
-      <!-- PROCESSO -->
       <div class="process-wrap">
-        <div class="fade-in">
-          <p class="section-label">processo</p>
-          <h3 class="process-title">Como trabalhamos</h3>
+        <div class="fade-up">
+          <span class="label">processo</span>
+          <h3 class="subsection-title">Como trabalhamos.</h3>
         </div>
 
-        <div class="process-line fade-in"></div>
-
-        <div class="process-grid">
-          <article class="fade-in">
-            <p class="process-card-number">01</p>
-            <h4 class="process-card-title">Briefing</h4>
-            <p class="process-card-desc">
+        <div class="process-grid stagger js-stagger">
+          <article class="process-card">
+            <p class="process-ghost">01</p>
+            <h4 class="process-title">Briefing</h4>
+            <p class="process-copy">
               Ouvimos antes de produzir. Percebemos o negócio,
               o objetivo e a audiência.
             </p>
           </article>
 
-          <article class="fade-in">
-            <p class="process-card-number">02</p>
-            <h4 class="process-card-title">Estratégia</h4>
-            <p class="process-card-desc">
+          <article class="process-card">
+            <p class="process-ghost">02</p>
+            <h4 class="process-title">Estratégia</h4>
+            <p class="process-copy">
               Definimos o formato, o tom e a abordagem certa
               para cada projeto.
             </p>
           </article>
 
-          <article class="fade-in">
-            <p class="process-card-number">03</p>
-            <h4 class="process-card-title">Produção</h4>
-            <p class="process-card-desc">
+          <article class="process-card">
+            <p class="process-ghost">03</p>
+            <h4 class="process-title">Produção</h4>
+            <p class="process-copy">
               Captação, realização e direção com equipa própria
               e parceiros de confiança.
             </p>
           </article>
 
-          <article class="fade-in">
-            <p class="process-card-number">04</p>
-            <h4 class="process-card-title">Entrega</h4>
-            <p class="process-card-desc">
+          <article class="process-card">
+            <p class="process-ghost">04</p>
+            <h4 class="process-title">Entrega</h4>
+            <p class="process-copy">
               Edição, motion graphics e entrega final nos formatos
               e prazos acordados.
             </p>
@@ -1228,41 +1686,29 @@
         </div>
       </div>
 
-      <!-- EQUIPA -->
       <div class="team-wrap">
-        <div class="fade-in">
-          <p class="section-label">equipa</p>
-          <h3 class="team-title">A Equipa</h3>
+        <div class="fade-up">
+          <span class="label">equipa</span>
+          <h3 class="subsection-title">A Equipa.</h3>
         </div>
 
-        <div class="team-grid">
-          <article class="team-card fade-in">
-            <!-- REPLACE: team photo 1 -->
-            <div class="team-photo"></div>
-            <p class="team-name">Nome da Pessoa</p>
-            <p class="team-role">Cargo / Função</p>
+        <div class="team-grid stagger js-stagger">
+          <article class="team-card">
+            <div class="team-image team-image--1"></div>
+            <div class="team-info">
+              <!-- REPLACE: Team member 1 name -->
+              <p class="team-name">[Nome]</p>
+              <!-- REPLACE: Team member 1 role -->
+              <p class="team-role">Realização & Direção</p>
+            </div>
           </article>
 
-          <article class="team-card fade-in">
-            <!-- REPLACE: team photo 2 -->
-            <div class="team-photo"></div>
-            <p class="team-name">Nome da Pessoa</p>
-            <p class="team-role">Cargo / Função</p>
-          </article>
-        </div>
-      </div>
-
-      <!-- SAME STATS AS SECTION 4 -->
-      <div class="about-stats">
-        <div class="stats-grid">
-          <article class="stats-card fade-in">
-            <p class="stats-value">15</p>
-            <p class="stats-label">Anos de experiência conjunta</p>
-          </article>
-
-          <article class="stats-card fade-in">
-            <p class="stats-value">100+</p>
-            <p class="stats-label">Projetos entregues</p>
+          <article class="team-card">
+            <div class="team-image team-image--2"></div>
+            <div class="team-info">
+              <p class="team-name">[Nome]</p>
+              <p class="team-role">Produção & Edição</p>
+            </div>
           </article>
         </div>
       </div>
@@ -1270,208 +1716,286 @@
   </section>
 
   <!-- =========================
-       CONTACTO
+       Contacto
   ========================== -->
-  <section class="section section-pad" id="contacto">
+  <section class="section section--alt" id="contacto">
     <div class="container">
-      <div class="fade-in">
-        <p class="section-label">contacto</p>
+      <div class="fade-up">
         <h2 class="contact-title">Fale connosco.</h2>
       </div>
 
       <div class="contact-grid">
-        <div class="fade-in">
-          <div class="contact-block">
-            <p class="contact-label">Email</p>
-            <p class="contact-value">oddcutmedia@oddcut.pt</p>
+        <div class="contact-left fade-up">
+          <div class="info-block">
+            <p class="info-label">email</p>
+            <p class="info-value">oddcutmedia@oddcut.pt</p>
           </div>
 
-          <div class="contact-block">
-            <p class="contact-label">Localização</p>
-            <p class="contact-value">Lisboa, Portugal</p>
+          <div class="info-block">
+            <p class="info-label">localização</p>
+            <p class="info-value">Lisboa, Portugal</p>
           </div>
+
+          <div class="info-block">
+            <p class="info-label">instagram</p>
+            <p class="info-value">@oddcutmedia</p>
+          </div>
+
+          <div class="info-block">
+            <p class="info-label">linkedin</p>
+            <p class="info-value">odd.cut media</p>
+          </div>
+
+          <p class="info-manifesto">
+            Respondemos a todos os pedidos
+            em menos de 24 horas.
+          </p>
         </div>
 
-        <form class="form-stack fade-in">
-          <input class="field" type="text" name="nome" placeholder="Nome" />
-          <input class="field" type="email" name="email" placeholder="Email" />
-          <input class="field" type="text" name="assunto" placeholder="Assunto" />
-          <textarea class="field" name="mensagem" rows="5" placeholder="Mensagem"></textarea>
-          <button class="button-solid" type="submit">enviar</button>
-        </form>
-      </div>
+        <form class="fade-up" action="#" method="post">
+          <div class="field-wrap">
+            <label class="field-label" for="nome">nome</label>
+            <input class="field" id="nome" name="nome" type="text" placeholder="O seu nome" />
+          </div>
 
-      <div class="contact-cta fade-in">
-        <h3 class="contact-cta-title">Tem um projeto?</h3>
-        <p class="contact-cta-copy">Fale connosco. Sem compromisso.</p>
-        <a href="#contacto" class="button-outline">entrar em contacto</a>
+          <div class="field-wrap">
+            <label class="field-label" for="email">email</label>
+            <input class="field" id="email" name="email" type="email" placeholder="O seu email" />
+          </div>
+
+          <div class="field-wrap">
+            <label class="field-label" for="assunto">assunto</label>
+            <input class="field" id="assunto" name="assunto" type="text" placeholder="Como podemos ajudar?" />
+          </div>
+
+          <div class="field-wrap">
+            <label class="field-label" for="mensagem">mensagem</label>
+            <textarea class="field" id="mensagem" name="mensagem" rows="6" placeholder="Descreva o seu projeto"></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">enviar</button>
+        </form>
       </div>
     </div>
   </section>
 
   <!-- =========================
-       FOOTER
+       Final CTA
+  ========================== -->
+  <section class="section section--dark">
+    <div class="container final-cta fade-up">
+      <div class="final-line"></div>
+      <h2 class="final-title">Tem um projeto?</h2>
+      <p class="final-subtitle">Fale connosco. Sem compromisso.</p>
+      <a href="#contacto" class="btn btn--secondary">entrar em contacto</a>
+    </div>
+  </section>
+
+  <!-- =========================
+       Footer
   ========================== -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <p class="footer-brand">odd.cut media</p>
-        </div>
+    <div class="footer-top">
+      <p class="footer-brand">odd.cut media</p>
 
-        <div class="footer-links">
-          <a href="#trabalho">trabalho</a>
-          <a href="#sobre">sobre nós</a>
-          <a href="#contacto">contacto</a>
-        </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#trabalho">trabalho</a>
+        <a href="#sobre">sobre nós</a>
+        <a href="#contacto">contacto</a>
+      </nav>
 
-        <div class="footer-meta">
-          odd.cut media © 2026 · Lisboa · oddcutmedia@oddcut.pt
-        </div>
-      </div>
+      <p class="footer-email">oddcutmedia@oddcut.pt</p>
+    </div>
 
-      <div class="footer-bottom">
-        <a href="#" class="footer-socials">Instagram</a>
-        <a href="#" class="footer-socials">LinkedIn</a>
-      </div>
+    <div class="footer-bottom">
+      <p class="footer-meta">© 2026 odd.cut media · Lisboa, Portugal</p>
+      <p class="footer-social">Instagram · LinkedIn</p>
     </div>
   </footer>
 
   <script>
-    // =========================
-    // NAV BACKGROUND ON SCROLL
-    // =========================
-    const siteHeader = document.getElementById("siteHeader");
+    (() => {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      const sectionTargets = [...document.querySelectorAll("section[id]")];
+      const navLinks = [...document.querySelectorAll(".nav-link")];
+      const animatedItems = document.querySelectorAll(".fade-up, .js-stagger");
+      const counters = document.querySelectorAll(".js-count");
+      const dragRails = document.querySelectorAll(".js-drag-scroll");
 
-    function handleHeaderScroll() {
-      if (window.scrollY > 16) {
-        siteHeader.classList.add("is-scrolled");
-      } else {
-        siteHeader.classList.remove("is-scrolled");
-      }
-    }
+      // Header scroll state
+      const onScrollHeader = () => {
+        if (window.scrollY > 100) {
+          header.classList.add("is-scrolled");
+        } else {
+          header.classList.remove("is-scrolled");
+        }
+      };
+      onScrollHeader();
+      window.addEventListener("scroll", onScrollHeader, { passive: true });
 
-    handleHeaderScroll();
-    window.addEventListener("scroll", handleHeaderScroll);
+      // Smooth scroll with offset
+      const scrollToTarget = (targetId) => {
+        const el = document.querySelector(targetId);
+        if (!el) return;
+        const y = el.getBoundingClientRect().top + window.scrollY - header.offsetHeight + 1;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      };
 
-    // =========================
-    // MOBILE MENU
-    // =========================
-    const menuToggle = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-
-    function closeMobileMenu() {
-      mobileMenu.classList.remove("is-open");
-      menuToggle.classList.remove("is-active");
-      menuToggle.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    }
-
-    function openMobileMenu() {
-      mobileMenu.classList.add("is-open");
-      menuToggle.classList.add("is-active");
-      menuToggle.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
-    }
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("is-open");
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
-    });
-
-    mobileLinks.forEach((link) => {
-      link.addEventListener("click", closeMobileMenu);
-    });
-
-    // =========================
-    // SMOOTH SCROLL OFFSET FIX
-    // =========================
-    const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
-
-    allAnchorLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        const targetId = link.getAttribute("href");
-        const target = document.querySelector(targetId);
-
-        if (!target) return;
-
-        event.preventDefault();
-
-        const headerOffset = document.getElementById("siteHeader").offsetHeight;
-        const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset + 2;
-
-        window.scrollTo({
-          top: targetTop,
-          behavior: "smooth"
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          if (!href || href === "#") return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          scrollToTarget(href);
+          closeMenu();
         });
       });
-    });
 
-    // =========================
-    // FADE IN ON SCROLL
-    // =========================
-    const fadeItems = document.querySelectorAll(".fade-in");
+      // Mobile menu
+      const openMenu = () => {
+        menuToggle.classList.add("is-open");
+        mobileMenu.classList.add("is-open");
+        mobileMenu.setAttribute("aria-hidden", "false");
+        menuToggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      };
 
-    const fadeObserver = new IntersectionObserver(
-      (entries) => {
+      const closeMenu = () => {
+        menuToggle.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      };
+
+      menuToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("is-open")) closeMenu();
+        else openMenu();
+      });
+
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      // IntersectionObserver for fade/stagger
+      const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-
           entry.target.classList.add("is-visible");
-          fadeObserver.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         });
-      },
-      {
-        threshold: 0.15,
+      }, {
+        threshold: 0.12,
         rootMargin: "0px 0px -40px 0px"
-      }
-    );
-
-    fadeItems.forEach((item, index) => {
-      item.style.transitionDelay = `${(index % 6) * 0.1}s`;
-      fadeObserver.observe(item);
-    });
-
-    // =========================
-    // HORIZONTAL DRAG SCROLL
-    // =========================
-    const dragRails = document.querySelectorAll(".js-drag-scroll");
-
-    dragRails.forEach((rail) => {
-      let isDown = false;
-      let startX = 0;
-      let scrollLeft = 0;
-
-      rail.addEventListener("mousedown", (e) => {
-        isDown = true;
-        rail.classList.add("is-dragging");
-        startX = e.pageX - rail.offsetLeft;
-        scrollLeft = rail.scrollLeft;
       });
 
-      rail.addEventListener("mouseleave", () => {
-        isDown = false;
-        rail.classList.remove("is-dragging");
+      animatedItems.forEach((item) => revealObserver.observe(item));
+
+      // Count-up animation
+      const animateCount = (el) => {
+        const target = Number(el.dataset.target || 0);
+        const suffix = el.dataset.suffix || "";
+        const duration = 1500;
+        const start = performance.now();
+
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.floor(target * eased);
+          el.textContent = progress === 1 ? `${target}${suffix}` : `${value}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+
+        requestAnimationFrame(step);
+      };
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCount(entry.target);
+          counterObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.3 });
+
+      counters.forEach((counter) => counterObserver.observe(counter));
+
+      // Active section nav highlight
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navLinks.forEach((link) => {
+            const active = link.getAttribute("href") === `#${id}`;
+            link.classList.toggle("is-active", active);
+          });
+        });
+      }, {
+        threshold: 0.45,
+        rootMargin: `-${header.offsetHeight}px 0px -45% 0px`
       });
 
-      rail.addEventListener("mouseup", () => {
-        isDown = false;
-        rail.classList.remove("is-dragging");
-      });
+      sectionTargets.forEach((section) => sectionObserver.observe(section));
 
-      rail.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - rail.offsetLeft;
-        const walk = (x - startX) * 1.2;
-        rail.scrollLeft = scrollLeft - walk;
+      // Drag scroll rails
+      dragRails.forEach((rail) => {
+        let isDown = false;
+        let startX = 0;
+        let startScroll = 0;
+
+        const startDrag = (clientX) => {
+          isDown = true;
+          rail.classList.add("is-dragging");
+          startX = clientX;
+          startScroll = rail.scrollLeft;
+        };
+
+        const moveDrag = (clientX) => {
+          if (!isDown) return;
+          const delta = clientX - startX;
+          rail.scrollLeft = startScroll - delta;
+        };
+
+        const endDrag = () => {
+          isDown = false;
+          rail.classList.remove("is-dragging");
+        };
+
+        rail.addEventListener("mousedown", (e) => {
+          startDrag(e.clientX);
+        });
+
+        rail.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          moveDrag(e.clientX);
+        });
+
+        rail.addEventListener("mouseleave", endDrag);
+        rail.addEventListener("mouseup", endDrag);
+
+        rail.addEventListener("touchstart", (e) => {
+          if (!e.touches[0]) return;
+          startDrag(e.touches[0].clientX);
+        }, { passive: true });
+
+        rail.addEventListener("touchmove", (e) => {
+          if (!isDown || !e.touches[0]) return;
+          moveDrag(e.touches[0].clientX);
+        }, { passive: true });
+
+        rail.addEventListener("touchend", endDrag);
+        rail.addEventListener("touchcancel", endDrag);
       });
-    });
+    })();
   </script>
 </body>
 </html>
